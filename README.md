@@ -24,7 +24,7 @@
 <br>
 
 ## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> Role
-| Name | Role |
+| 이름 | 역할 |
 | :-----: | :-----: |
 |  박현지 | 초기 환경 세팅, 데이터베이스 설계, API 명세서 작성 및 구현 |
 |  문규원 | README 작성, 데이터베이스 설계, API 명세서 작성 및 구현 |

@@ -522,7 +522,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 ## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> API
 👉 [명세서 보러가기!](https://freezing-innovation-7f5.notion.site/API-a72262b5c1ee496fafd9b9879658ba7a)
 
-| 기능 | URI | HTTP 메서드 | 설명 | 담당 |  완료 |
+| 기능 | URI | HTTP<br>메서드 | 설명 | 담당 |  완료 |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | 
 | 회원가입/로그인 | /auth/signup | POST | 유저 회원가입 | 규원 |💜
 || /auth/login | POST | 유저 로그인 | 현지 |

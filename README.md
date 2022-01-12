@@ -537,16 +537,16 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 || /project/:project-id | DELETE | 프로젝트 모집 완료 | 현지 | 
 | 팀원 찾기 | /member/dummy | GET | 팀원 찾기 뷰 더미 데이터 받기 | 규원 | 
 || /member | POST | 팀원 찾기 조회 | 규원 | 
-| 마이페이지/팀원 상세뷰 | /user/profile/:user-id | GET | 유저 프로필 가져오기 | 규원 | 
+| 마이페이지/<br>팀원 상세뷰 | /user/profile/:user-id | GET | 유저 프로필 가져오기 | 규원 | 
 || /user/profile/dummy | GET | 유저 프로필 수정 더미 데이터 받기 | 규원 | 
 || /user/profile/:user-id | GET | 유저 프로필 수정 | 규원 | 
 || /user/profile/photo/:user-id | POST | 유저 프로필 사진 변경 | 규원 | 
-| 콕 찌르기/팀 지원하기 | /user/poke-user | POST | 콕찌르기 | 규원 | 
+| 콕 찌르기/<br>팀 지원하기 | /user/poke-user | POST | 콕찌르기 | 규원 | 
 || /user/poke-project | POST | 팀 지원하기 | 현지 | 
 || /user/poke-user/:user-id | GET | 나를 찔러본 사람 | 규원 | 
 || /user/poke-project/:user-id | GET | 내 프로젝트에 지원한 사람 | 현지 | 
-|| /user/poke-user/:user-id<br>/:poking-user-id | DELETE | 나를 찔러본 사람 삭제 | 규원 | 
-|| /user/poke-project/:project-id<br>/:poking-user-id | DELETE | 내 프로젝트에 지원한 사람 삭제 | 현지 |
+|| /user/poke-user<br>/:user-id/:poking-user-id | DELETE | 나를 찔러본 사람 삭제 | 규원 | 
+|| /user/poke-project<br>/:project-id/:poking-user-id | DELETE | 내 프로젝트에 지원한 사람 삭제 | 현지 |
 | 협업 성향 테스트 | | POST | 테스트 결과별로 값 저장(예정) | 현지 <br> 규원 |
 
 <br>

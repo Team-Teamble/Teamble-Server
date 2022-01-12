@@ -524,7 +524,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 
 | 기능 | URI | HTTP<br>메서드 | 설명 | 담당 |  완료 |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | 
-| 회원가입/로그인 | /auth/signup | POST | 유저 회원가입 | 규원 |💜
+| 회원가입/<br>로그인 | /auth/signup | POST | 유저 회원가입 | 규원 |💜
 || /auth/login | POST | 유저 로그인 | 현지 |
 || /auth/login | GET | 유저 자동 로그인 | 현지 |
 | 랜딩 페이지 | /project/top | GET | 주목할만한 프로젝트 조회 | 규원 |
@@ -537,17 +537,17 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 || /project/:project-id | DELETE | 프로젝트 모집 완료 | 현지 | 
 | 팀원 찾기 | /member/dummy | GET | 팀원 찾기 뷰 더미 데이터 받기 | 규원 | 
 || /member | POST | 팀원 찾기 조회 | 규원 | 
-| 마이페이지/팀원 상세뷰 | /user/profile/:user-id | GET | 유저 프로필 가져오기 | 규원 | 
+| 마이페이지/<br>팀원 상세뷰 | /user/profile/:user-id | GET | 유저 프로필 가져오기 | 규원 | 
 || /user/profile/dummy | GET | 유저 프로필 수정 더미 데이터 받기 | 규원 | 
 || /user/profile/:user-id | GET | 유저 프로필 수정 | 규원 | 
-|| /user/profile/photo/:user-id | POST | 유저 프로필 사진 변경 | 규원 | 
-| 콕 찌르기/팀 지원하기 | /user/poke-user | POST | 콕찌르기 | 규원 | 
+|| /user/profile/photo<br>/:user-id | POST | 유저 프로필 사진 변경 | 규원 | 
+| 콕 찌르기/<br>팀 지원하기 | /user/poke-user | POST | 콕찌르기 | 규원 | 
 || /user/poke-project | POST | 팀 지원하기 | 현지 | 
 || /user/poke-user/:user-id | GET | 나를 찔러본 사람 | 규원 | 
 || /user/poke-project/:user-id | GET | 내 프로젝트에 지원한 사람 | 현지 | 
-|| /user/poke-user/:user-id<br>/:poking-user-id | DELETE | 나를 찔러본 사람 삭제 | 규원 | 
-|| /user/poke-project/:project-id<br>/:poking-user-id | DELETE | 내 프로젝트에 지원한 사람 삭제 | 현지 |
-| 협업 성향 테스트 | | POST | 테스트 결과별로 값 저장(예정) | 현지 <br> 규원 |
+|| /user/poke-user<br>/:user-id/:poking-user-id | DELETE | 나를 찔러본 사람 삭제 | 규원 | 
+|| /user/poke-project<br>/:project-id/:poking-user-id | DELETE | 내 프로젝트에 지원한 사람 삭제 | 현지 |
+| 협업 성향<br>테스트 | | POST | 테스트 결과별로 값 저장(예정) | 현지 <br> 규원 |
 
 <br>
 

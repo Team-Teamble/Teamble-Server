@@ -19,10 +19,10 @@ module.exports = {
   LOGIN_FAIL: '로그인에 실패하였습니다',
   NO_USER: '존재하지 않는 회원입니다',
   MISS_MATCH_PW: '비밀번호가 맞지 않습니다',
-  
+
   // 랜딩페이지
   READ_TOP_PROJECT_SUCCESS: '주목할만한 프로젝트 조회에 성공하였습니다',
-  
+
   // 프로젝트
   GET_PROJECT_DUMMY_SUCCESS: '프로젝트 뷰 더미 데이터 받기에 성공하였습니다',
   CREATE_PROJECT_SUCCESS: '프로젝트 생성에 성공하였습니다',
@@ -53,7 +53,6 @@ module.exports = {
   READ_VOLUNTEER_TEAM_SUCCESS: '내 프로젝트에 지원한 사람 조회에 성공하였습니다',
   DELETE_POKE_USER_SUCCESS: '나를 찔러 본 사람 삭제에 성공하였습니다',
   DELETE_VOLUNTEER_TEAM_SUCCESS: '내 프로젝트에 지원한 사람 삭제에 성공하였습니다',
-  
-  // 협업 성향 테스트
 
+  // 협업 성향 테스트
 };

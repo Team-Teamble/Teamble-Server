@@ -1,5 +1,5 @@
-const _ = require("lodash");
-const convertSnakeToCamel = require("../lib/convertSnakeToCamel");
+const _ = require('lodash');
+const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
 
 const getTypeByTypeId = async (client, typeId) => {
   const { rows } = await client.query(
@@ -8,7 +8,7 @@ const getTypeByTypeId = async (client, typeId) => {
       FROM "type" t
       WHERE t.id = $1
     `,
-    [typeId]
+    [typeId],
   );
 
   /**
@@ -19,4 +19,5 @@ const getTypeByTypeId = async (client, typeId) => {
 
   return convertSnakeToCamel.keysToCamel(type);
 };
+
 module.exports = { getTypeByTypeId };

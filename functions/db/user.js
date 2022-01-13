@@ -1,7 +1,7 @@
-const _ = require("lodash");
-const convertSnakeToCamel = require("../lib/convertSnakeToCamel");
+const _ = require('lodash');
+const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
 
-  // DB에 유저 생성하기
+// DB에 유저 생성하기
 const addUser = async (client, email, name, idFirebase) => {
   let { rows } = await client.query(
     `
@@ -24,10 +24,10 @@ const getUserByIdFirebase = async (client, idFirebase) => {
       FROM "user" u 
       WHERE u.id_firebase = $1 AND u.is_deleted = false 
     `,
-    [idFirebase]
+    [idFirebase],
   );
   return convertSnakeToCamel.keysToCamel(rows[0]);
-}
+};
 
 // type_id를 제외한 유저 정보 조회
 const getUserByUserId = async (client, userId) => {
@@ -49,11 +49,12 @@ const getUserIdByIdFirebase = async (client, idFirebase) => {
     FROM "user" u
     WHERE u.id_firebase = $1 AND u.is_deleted = false
     `,
-    [idFirebase]
+    [idFirebase],
   );
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
+// 해당 유저의 타입 id 조회
 const getTypeIdByUserId = async (client, userId) => {
   const { rows } = await client.query(
     `
@@ -61,10 +62,16 @@ const getTypeIdByUserId = async (client, userId) => {
     FROM "user" u
     WHERE u.id = $1
     `,
-    [userId]
+    [userId],
   );
 
-  return convertSnakeToCamel.keysToCamel(rows[0]);
+  /** 
+  타입 id가 존재하는 경우 타입 id 저장
+  타입 id가 존재하지 않는 경우 null 저장
+  */
+  const typeId = rows[0] ? rows[0].type_id : null;
+
+  return convertSnakeToCamel.keysToCamel(typeId);
 };
-  
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId,  getUserIdByIdFirebase, getTypeIdByUserId };
+
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId };

@@ -1,8 +1,8 @@
-const _ = require("lodash");
+const _ = require('lodash');
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
-    return $1.toUpperCase().replace("-", "").replace("_", "");
+    return $1.toUpperCase().replace('-', '').replace('_', '');
   });
 };
 
@@ -11,7 +11,7 @@ const isArray = function (a) {
 };
 
 const isObject = function (o) {
-  return o === Object(o) && !isArray(o) && typeof o !== "function";
+  return o === Object(o) && !isArray(o) && typeof o !== 'function';
 };
 
 const keysToCamel = function (o) {

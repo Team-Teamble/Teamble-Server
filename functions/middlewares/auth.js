@@ -49,7 +49,7 @@ const checkUser = async (req, res, next) => {
         );
 
     // 위의 id 값으로 유저를 조회합니다.
-    const user = await userDB.getUserById(client, userId);
+    const user = await userDB.getUserByUserId(client, userId);
 
     // 유저가 없을 시의 에러 처리입니다.
     if (!user)

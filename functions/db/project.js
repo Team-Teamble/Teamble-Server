@@ -10,7 +10,7 @@ const getProjectIdByUserId = async (client, userId) => {
     WHERE p.user_id = $1
       AND p.is_closed = FALSE;
     `,
-    [userId],
+    [userId]
   );
 
   /** 

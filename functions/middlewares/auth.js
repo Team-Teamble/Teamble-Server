@@ -17,10 +17,8 @@ const checkUser = async (req, res, next) => {
   let client;
   try {
     client = await db.connect(req);
-
     // jwt를 해독하고 인증 절차를 거칩니다.
     const decodedToken = jwtHandlers.verify(accesstoken);
-
     // jwt가 만료되었거나 잘못되었을 시의 에러 처리입니다.
     if (decodedToken === TOKEN_EXPIRED) return res.status(statusCode.UNAUTHORIZED).send(util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_INVALID));
     if (decodedToken === TOKEN_INVALID) return res.status(statusCode.UNAUTHORIZED).send(util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_INVALID));

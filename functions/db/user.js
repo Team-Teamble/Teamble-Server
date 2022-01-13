@@ -1,40 +1,47 @@
-const _ = require('lodash');
-const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
+const _ = require("lodash");
+const convertSnakeToCamel = require("../lib/convertSnakeToCamel");
 
-const addUser = async (client, email, name, idFirebase) => {
-  // DB에 유저 생성하기
-  let { rows } = await client.query(
+const getUserByIdFirebase = async (client, idFirebase) => {
+  const { rows } = await client.query(
     `
-    INSERT INTO "user"
-    (email, name, id_firebase)
-    VALUES
-    ($1, $2, $3)
-    RETURNING id, id_firebase, name, email, photo, is_checked, created_at, updated_at, is_deleted
+        SELECT id, id_firebase, name, email, phone, photo, university, major, area, intro, description, is_checked, created_at, updated_at, is_deleted
+        FROM "user" u 
+        WHERE u.id_firebase = $1 AND u.is_deleted = false 
     `,
-
-    [email, name, idFirebase],
+    [idFirebase]
   );
-
-  // 해당 유저의 진행중인 프로젝트 id 가져오기
-  let projectId = await client.query(
-      `
-      SELECT id FROM "project" p
-      WHERE p.user_id = $1
-          AND p.is_closed = FALSE;
-      `,
-      [rows[0].id],
-  );
-
-  /** 
-  프로젝트가 존재하는 경우 프로젝트 id 저장
-  프로젝트가 존재하지 않는 경우 null 저장
-  */
-  projectId = projectId.rows[0] ? projectId.rows[0].id : null;
-
-  // 유저 정보를 가진 객체에 projectId 넣어주기
-  rows[0]["projectId"] = projectId;
 
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { addUser };
+const getUserIdByIdFirebase = async (client, idFirebase) => {
+  const { rows } = await client.query(
+    `
+        SELECT id
+        FROM "user" u
+        WHERE u.id_firebase = $1 AND u.is_deleted = false
+        `,
+    [idFirebase]
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+const getTypeIdByUserId = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+        SELECT type_id
+        FROM "user" u
+        WHERE u.id = $1
+        `,
+    [userId]
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = {
+  getUserByIdFirebase,
+  getUserIdByIdFirebase,
+  getTypeIdByUserId,
+};

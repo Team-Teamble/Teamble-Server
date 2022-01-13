@@ -52,13 +52,7 @@ module.exports = functions
   .https.onRequest(async (req, res) => {
     // 들어오는 요청에 대한 로그를 콘솔에 찍기. 디버깅 때 유용하게 쓰일 예정.
     // 콘솔에 찍고 싶은 내용을 원하는 대로 추가하면 됨. (req.headers, req.query 등)
-    console.log(
-      '\n\n',
-      '[api]',
-      `[${req.method.toUpperCase()}]`,
-      req.originalUrl,
-      req.body
-    );
+    console.log('\n\n', '[api]', `[${req.method.toUpperCase()}]`, req.originalUrl, req.body);
 
     // 맨 위에 선언된 express app 객체를 리턴.
     // 요것이 functions/index.js 안의 api: require("./api")에 들어가는 것.

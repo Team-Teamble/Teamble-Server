@@ -4,21 +4,18 @@ const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
 const getTagByTypeId = async (client, typeId) => {
   const { rows } = await client.query(
     `
-        SELECT tag_id
-        FROM "type_tag" tt
-        WHERE type_id = $1
-        `,
-    [typeId]
+    SELECT t.*
+    FROM "tag" t
+    INNER JOIN "type_tag" tt
+      ON t.id = tt.tag_id
+    WHERE tt.type_id = $1
+    ORDER BY id ASC;
+    `,
+    [typeId],
   );
 
-  /**
-  타입이 존재하는 경우 타입 객체 저장
-  타입이 존재하지 않는 경우 null 저장
-  */
-  const tag = rows[0] ? rows[0] : null;
-  return convertSnakeToCamel.keysToCamel(tag);
+  // 해당하는 태그가 없는 경우 빈 배열 반환
+  return convertSnakeToCamel.keysToCamel(rows);
 };
 
-module.exports = {
-  getTagByTypeId,
-};
+module.exports = { getTagByTypeId };

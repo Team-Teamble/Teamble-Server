@@ -20,8 +20,6 @@ const getTypeByTypeId = async (client, typeId) => {
   return convertSnakeToCamel.keysToCamel(type);
 };
 
-module.exports = { getTypeByTypeId };
-
 // type 테이블 모든 정보 가져오기
 const getType = async (client) => {
   const { rows } = await client.query(
@@ -29,7 +27,7 @@ const getType = async (client) => {
     SELECT *
     FROM "type" t
     ORDER BY id ASC
-    `
+    `,
   );
   /**
   협업 성향 정보가 존재하는 경우 기간 객체 저장
@@ -39,7 +37,4 @@ const getType = async (client) => {
   return convertSnakeToCamel.keysToCamel(type);
 };
 
-module.exports = {
-  getTypeByTypeId,
-  getType,
-};
+module.exports = { getTypeByTypeId, getType };

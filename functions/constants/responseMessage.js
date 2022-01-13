@@ -6,6 +6,9 @@ module.exports = {
   NULL_VALUE: '필요한 값이 없습니다',
   OUT_OF_VALUE: '파라미터 값이 잘못되었습니다',
 
+  INTERNAL_SERVER_ERROR: '서버 내 오류',
+  FILE_TYPE_ERROR: '잘못된 파일 형식입니다',
+
   // 회원가입
   CREATE_USER: '회원 가입에 성공하였습니다',
   BLANK_BOX: '올바르지 않습니다. 다시 입력해주세요.',

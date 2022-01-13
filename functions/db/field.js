@@ -7,7 +7,7 @@ const getFieldIdByUserId = async (client, userId) => {
     `
     SELECT uf.field_id
     FROM "user_field" uf
-    WHERE uf.user_id = $1
+    WHERE uf.user_id = $1;
     `,
     [userId],
   );
@@ -43,7 +43,7 @@ const getField = async (client) => {
     `
     SELECT *
     FROM "field" f
-    ORDER BY id ASC
+    ORDER BY id ASC;
     `,
   );
   /**
@@ -54,4 +54,23 @@ const getField = async (client) => {
   return convertSnakeToCamel.keysToCamel(field);
 };
 
-module.exports = { getFieldIdByUserId, getFieldByFieldId, getField };
+// field 테이블의 '전체' row를 제외한 모든 정보 가져오기
+const getFieldWithoutAll = async (client) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "field" f
+    WHERE f.id > 1
+    ORDER BY id ASC;
+    `,
+  );
+  /**
+  분야 정보가 존재하는 경우 기간 객체 저장
+  분야 정보가 존재하지 않는 경우 [] 저장
+  */
+  const fieldWithoutAll = rows ? rows : [];
+
+  return convertSnakeToCamel.keysToCamel(fieldWithoutAll);
+};
+
+module.exports = { getFieldIdByUserId, getFieldByFieldId, getField, getFieldWithoutAll };

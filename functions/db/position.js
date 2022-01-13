@@ -7,7 +7,7 @@ const getPositionIdByUserId = async (client, userId) => {
     `
     SELECT up.position_id
     FROM "user_position" up
-    WHERE up.user_id = $1
+    WHERE up.user_id = $1;
     `,
     [userId],
   );
@@ -43,7 +43,7 @@ const getPosition = async (client) => {
     `
     SELECT *
     FROM "position" p
-    ORDER BY id ASC
+    ORDER BY id ASC;
     `,
   );
 
@@ -56,4 +56,24 @@ const getPosition = async (client) => {
   return convertSnakeToCamel.keysToCamel(position);
 };
 
-module.exports = { getPositionIdByUserId, getPositionByPositionId, getPosition };
+// position 테이블의 '전체' row를 제외한 모든 정보 가져오기
+const getPositionWithoutAll = async (client) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "position" p
+    WHERE p.id > 1
+    ORDER BY id ASC;
+    `,
+  );
+
+  /**
+  포지션 정보가 존재하는 경우 기간 객체 저장
+  포지션 정보가 존재하지 않는 경우 [] 저장
+  */
+  const positionWithoutAll = rows ? rows : [];
+
+  return convertSnakeToCamel.keysToCamel(positionWithoutAll);
+};
+
+module.exports = { getPositionIdByUserId, getPositionByPositionId, getPosition, getPositionWithoutAll };

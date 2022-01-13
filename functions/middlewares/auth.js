@@ -8,14 +8,14 @@ const { userDB } = require("../db");
 const { TOKEN_INVALID, TOKEN_EXPIRED } = require("../constants/jwt");
 
 const checkUser = async (req, res, next) => {
-  // request headers에 accesstoken라는 이름으로 담긴 값(jwt)을 가져옵니다.
-  const { accesstoken } = req.headers;
+  // request headers에 X-Authorization-Token라는 이름으로 담긴 값(jwt)을 가져옵니다.
+  const accesstoken = req.headers["x-authorization-token"];
 
   // accesstoken이 없을 시의 에러 처리입니다.
   if (!accesstoken)
     return res
-      .status(statusCode.BAD_REQUEST)
-      .send(util.fail(statusCode.BAD_REQUEST, responseMessage.TOKEN_EMPTY));
+      .status(statusCode.UNAUTHORIZED)
+      .send(util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_EMPTY));
 
   let client;
   try {
@@ -29,7 +29,7 @@ const checkUser = async (req, res, next) => {
       return res
         .status(statusCode.UNAUTHORIZED)
         .send(
-          util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_EXPIRED)
+          util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_INVALID)
         );
     if (decodedToken === TOKEN_INVALID)
       return res
@@ -49,7 +49,7 @@ const checkUser = async (req, res, next) => {
         );
 
     // 위의 id 값으로 유저를 조회합니다.
-    const user = await userDB.getUserById(client, userId);
+    const user = await userDB.getUserByUserId(client, userId);
 
     // 유저가 없을 시의 에러 처리입니다.
     if (!user)

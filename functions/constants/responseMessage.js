@@ -9,9 +9,6 @@ module.exports = {
   INTERNAL_SERVER_ERROR: '서버 내 오류',
   FILE_TYPE_ERROR: '잘못된 파일 형식입니다',
 
-  INTERNAL_SERVER_ERROR: "서버 내 오류",
-  FILE_TYPE_ERROR: "잘못된 파일 형식입니다",
-
   // 회원가입
   CREATE_USER: '회원 가입에 성공하였습니다',
   BLANK_BOX: '올바르지 않습니다. 다시 입력해주세요.',

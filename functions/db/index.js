@@ -1,5 +1,5 @@
 module.exports = {
-  userDB: require("./user"),
-  typeDB: require("./type"),
-  projectDB: require("./project"),
+    userDB: require('./user'),
+    projectDB: require('./project'),
+    typeDB: require('./type')
 };

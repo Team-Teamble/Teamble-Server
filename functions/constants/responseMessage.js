@@ -26,8 +26,7 @@ module.exports = {
   ADD_PROJECT_MEMBER_SUCCESS: '프로젝트 팀 구성원 추가에 성공하였습니다',
 
   // 프로젝트 찾기
-  GET_PROJECT_FIND_DUMMY_SUCCESS:
-    '프로젝트 찾기 뷰 더미 데이터 받기에 성공하였습니다',
+  GET_PROJECT_FIND_DUMMY_SUCCESS: '프로젝트 찾기 뷰 더미 데이터 받기에 성공하였습니다',
   GET_PROJECT_FIND_SUCCESS: '프로젝트 찾기 뷰 조회에 성공하였습니다',
   READ_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
 
@@ -35,14 +34,12 @@ module.exports = {
   DELETE_PROJECT_SUCCESS: '프로젝트 모집완료에 성공하였습니다.',
 
   // 팀원 찾기
-  GET_MEMBER_FIND_DUMMY_SUCCESS:
-    '팀원 찾기 뷰 더미 데이터 받기에 성공하였습니다',
+  GET_MEMBER_FIND_DUMMY_SUCCESS: '팀원 찾기 뷰 더미 데이터 받기에 성공하였습니다',
   GET_MEMBER_FIND_SUCCESS: '팀원 찾기 뷰 조회에 성공하였습니다',
 
   // 마이페이지, 팀원 상세뷰
   GET_USER_PROFILE_SUCCESS: '유저 프로필 가져오기에 성공하였습니다',
-  GET_USER_PROFILE_DUMMY_SUCCESS:
-    '유저 프로필 수정 더미 데이터 받기에 성공하였습니다',
+  GET_USER_PROFILE_DUMMY_SUCCESS: '유저 프로필 수정 더미 데이터 받기에 성공하였습니다',
   UPDATE_USER_PROFILE_SUCCESS: '유저 프로필 수정에 성공하였습니다',
   UPDATE_USER_PHOTO_SUCCESS: '유저 프로필 사진 변경에 성공하였습니다',
 
@@ -50,11 +47,9 @@ module.exports = {
   POKE_USER_SUCCESS: '콕 찌르기에 성공하였습니다',
   VOLUNTEER_TEAM_SUCCESS: '팀 지원하기에 성공하였습니다',
   READ_POKE_USER_SUCCESS: '나를 찔러 본 사람 조회에 성공하였습니다',
-  READ_VOLUNTEER_TEAM_SUCCESS:
-    '내 프로젝트에 지원한 사람 조회에 성공하였습니다',
+  READ_VOLUNTEER_TEAM_SUCCESS: '내 프로젝트에 지원한 사람 조회에 성공하였습니다',
   DELETE_POKE_USER_SUCCESS: '나를 찔러 본 사람 삭제에 성공하였습니다',
-  DELETE_VOLUNTEER_TEAM_SUCCESS:
-    '내 프로젝트에 지원한 사람 삭제에 성공하였습니다',
+  DELETE_VOLUNTEER_TEAM_SUCCESS: '내 프로젝트에 지원한 사람 삭제에 성공하였습니다',
 
   // 협업 성향 테스트
 };

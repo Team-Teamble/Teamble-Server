@@ -8,7 +8,7 @@ const getTypeByTypeId = async (client, typeId) => {
       FROM "type" t
       WHERE t.id = $1
     `,
-    [typeId]
+    [typeId],
   );
 
   /**
@@ -19,6 +19,7 @@ const getTypeByTypeId = async (client, typeId) => {
 
   return convertSnakeToCamel.keysToCamel(type);
 };
+
 module.exports = { getTypeByTypeId };
 
 // type 테이블 모든 정보 가져오기

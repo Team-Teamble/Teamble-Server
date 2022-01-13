@@ -110,6 +110,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 1. 이름으로부터 의도가 읽혀질 수 있게 쓴다.
 
 - ex)
+
   ```jsx
   // bad
   function q() {
@@ -121,12 +122,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     // ..stuff..
   }
   ```
-  <br>
 
+  <br>
 
 2. 오브젝트, 함수, 그리고 인스턴스에는 `camelCase`를 사용한다.
 
 - ex)
+
   ```jsx
   // bad
   const OBJEcttsssss = {};
@@ -137,12 +139,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
   const thisIsMyObject = {};
   function thisIsMyFunction() {}
   ```
-  <br>
 
+  <br>
 
 3. 클래스나 constructor에는 `PascalCase`를 사용한다.
 
 - ex)
+
   ```jsx
   // bad
   function user(options) {
@@ -164,8 +167,8 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     name: 'yup',
   });
   ```
-  <br>
 
+  <br>
 
 4. 함수 이름은 동사 - 명사 형태로 작성한다.
    ex) `postUserInformation( )`
@@ -191,6 +194,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 1. 복수행의 블록에는 중괄호({})를 사용한다.
 
 - ex)
+
   ```jsx
   // bad
   if (test)
@@ -212,12 +216,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     return false;
   }
   ```
-  <br>
 
+  <br>
 
 2. 복수행 블록의 `if` 와 `else` 를 이용하는 경우 `else` 는 `if` 블록 끝의 중괄호(})와 같은 행에 위치시킨다.
 
 - ex)
+
   ```jsx
   // bad
   if (test) {
@@ -235,6 +240,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     thing3();
   }
   ```
+
   <br>
 
 ### 코멘트(Comments)
@@ -244,6 +250,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 1. 복수형의 코멘트는 `/** ... */` 를 사용한다.
 
 - ex)
+
   ```jsx
   // good
   /**
@@ -256,12 +263,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     return element;
   }
   ```
-  <br>
 
+  <br>
 
 2. 단일행의 코멘트에는 `//` 을 사용하고 코멘트를 추가하고 싶은 코드의 상부에 배치한다. 그리고 코멘트의 앞에 빈행을 넣는다.
 
 - ex)
+
   ```jsx
   // bad
   const active = true; // is current tab
@@ -280,6 +288,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     return type;
   }
   ```
+
     <br>
 
 ### 공백(Whitespace)
@@ -289,6 +298,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 1. 주요 중괄호({}) 앞에는 스페이스 1개를 넣는다.
 
 - ex)
+
   ```jsx
   // bad
   function test() {
@@ -300,12 +310,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     console.log('test');
   }
   ```
-  <br>
 
+  <br>
 
 2. 제어구문 (`if` 문이나 `while` 문 등) 의 소괄호 (()) 앞에는 스페이스를 1개 넣고 함수 선언이나 함수 호출시 인수 리스트의 앞에는 스페이스를 넣지 않는다.
 
 - ex)
+
   ```jsx
   // bad
   if (isJedi) {
@@ -327,12 +338,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     console.log('Swooosh!');
   }
   ```
-  <br>
 
+  <br>
 
 3. 연산자 사이에는 스페이스를 넣는다.
 
 - ex)
+
   ```jsx
   // bad
   const x = y + 5;
@@ -340,6 +352,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
   // good
   const x = y + 5;
   ```
+
   <br>
 
 ### 콤마(Commas)
@@ -349,6 +362,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 1. 선두의 콤마 **BAD**
 
 - ex)
+
   ```jsx
   // bad
   const story = [once, upon, aTime];
@@ -356,12 +370,13 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
   // good
   const story = [once, upon, aTime];
   ```
-  <br>
 
+  <br>
 
 2. 끝의 콤마 **GOOD**
 
 - ex)
+
   ```jsx
   // bad
   const hero = {
@@ -375,8 +390,8 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
     lastName: 'Scully',
   };
   ```
-  <br>
 
+  <br>
 
 ### 세미콜론(Seminolons)
 
@@ -400,7 +415,6 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
   ```
   <br>
 
-
 ### 문자열(Strings)
 
 ---
@@ -418,7 +432,6 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
       ```
 
   <br>
-
 
 2. 프로그램에서 문자열을 생성하는 경우는 문자열 연결이 아닌 `template strings`를 이용한다.
 
@@ -463,7 +476,6 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 
   <br>
 
-
 2. 함수식보다 함수 선언을 이용한다.
 
 - ex)
@@ -479,7 +491,6 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
         ```
 
   <br>
-
 
 ### 조건식과 등가식(Comparison Operators & Equality)
 
@@ -533,17 +544,17 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |                            |                   /auth/login                   |      POST      |            유저 로그인            |      현지      |
 |                            |                   /auth/login                   |      GET       |         유저 자동 로그인          |      현지      |
 |        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      |      규원      |
-|          프로젝트          |                 /project/dummy                  |      GET       | 프로젝트 생성 - 더미 데이터 받기  |      현지      |
+|          프로젝트          |                /project/metadata                |      GET       | 프로젝트 생성 - 더미 데이터 받기  |      현지      |  💜  |
 |                            |                    /project                     |      POST      |           프로젝트 생성           |      현지      |
 |                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   |      현지      |
-|                            |              /project/search/dummy              |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |
+|                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |
 |                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        |      현지      |
 |                            |               /project/:projectId               |      GET       |       프로젝트 상세뷰 조회        |      현지      |
 |                            |               /project/:projectId               |     DELETE     |        프로젝트 모집 완료         |      현지      |
-|         팀원 찾기          |                  /member/dummy                  |      GET       |   팀원 찾기 뷰 더미 데이터 받기   |      규원      |
+|         팀원 찾기          |                /member/metadata                 |      GET       |   팀원 찾기 뷰 더미 데이터 받기   |      규원      |
 |                            |                     /member                     |      POST      |          팀원 찾기 조회           |      규원      |
-| 마이페이지/<br>팀원 상세뷰 |              /user/profile/:userId              |      GET       |       유저 프로필 가져오기        |      규원      |
-|                            |               /user/profile/dummy               |      GET       | 유저 프로필 수정 더미 데이터 받기 |      규원      |
+| 마이페이지/<br>팀원 상세뷰 |              /user/profile/:userId              |      GET       |       유저 프로필 가져오기        |      규원      |  💜  |
+|                            |             /user/profile/metadata              |      GET       | 유저 프로필 수정 더미 데이터 받기 |      규원      |
 |                            |              /user/profile/:userId              |      GET       |         유저 프로필 수정          |      규원      |
 |                            |         /user/profile/photo<br>/:userId         |      POST      |       유저 프로필 사진 변경       |      규원      |
 | 콕 찌르기/<br>팀 지원하기  |                 /user/poke-user                 |      POST      |             콕찌르기              |      규원      |

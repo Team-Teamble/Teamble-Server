@@ -1,6 +1,6 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("./teamble-server-firebase-adminsdk-qy3jy-abef10cd0d.json");
-const dotenv = require("dotenv");
+const admin = require('firebase-admin');
+const serviceAccount = require('./teamble-server-firebase-adminsdk-qy3jy-abef10cd0d.json');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -14,5 +14,5 @@ if (admin.apps.length === 0) {
 }
 
 module.exports = {
-  api: require("./api"),
+  api: require('./api'),
 };

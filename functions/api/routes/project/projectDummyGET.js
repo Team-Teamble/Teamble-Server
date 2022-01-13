@@ -1,9 +1,9 @@
-const functions = require("firebase-functions");
-const util = require("../../../lib/util");
-const statusCode = require("../../../constants/statusCode");
-const responseMessage = require("../../../constants/responseMessage");
-const db = require("../../../db/db");
-const { periodDB, postionDB, goalDB, typeDB, fieldDB } = require("../../../db");
+const functions = require('firebase-functions');
+const util = require('../../../lib/util');
+const statusCode = require('../../../constants/statusCode');
+const responseMessage = require('../../../constants/responseMessage');
+const db = require('../../../db/db');
+const { periodDB, postionDB, goalDB, typeDB, fieldDB } = require('../../../db');
 
 module.exports = async (req, res) => {
   let client;

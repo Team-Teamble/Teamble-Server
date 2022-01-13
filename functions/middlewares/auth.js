@@ -1,15 +1,15 @@
-const functions = require("firebase-functions");
-const jwtHandlers = require("../lib/jwtHandlers");
-const db = require("../db/db");
-const util = require("../lib/util");
-const statusCode = require("../constants/statusCode");
-const responseMessage = require("../constants/responseMessage");
-const { userDB } = require("../db");
-const { TOKEN_INVALID, TOKEN_EXPIRED } = require("../constants/jwt");
+const functions = require('firebase-functions');
+const jwtHandlers = require('../lib/jwtHandlers');
+const db = require('../db/db');
+const util = require('../lib/util');
+const statusCode = require('../constants/statusCode');
+const responseMessage = require('../constants/responseMessage');
+const { userDB } = require('../db');
+const { TOKEN_INVALID, TOKEN_EXPIRED } = require('../constants/jwt');
 
 const checkUser = async (req, res, next) => {
   // request headers에 X-Authorization-Token라는 이름으로 담긴 값(jwt)을 가져옵니다.
-  const accesstoken = req.headers["x-authorization-token"];
+  const accesstoken = req.headers['x-authorization-token'];
 
   // accesstoken이 없을 시의 에러 처리입니다.
   if (!accesstoken)

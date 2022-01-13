@@ -1,5 +1,5 @@
-const _ = require("lodash");
-const convertSnakeToCamel = require("../lib/convertSnakeToCamel");
+const _ = require('lodash');
+const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
 
 // goal 테이블 모든 정보 가져오기
 const getGoal = async (client) => {

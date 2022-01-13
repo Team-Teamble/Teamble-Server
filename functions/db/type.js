@@ -1,5 +1,5 @@
-const _ = require("lodash");
-const convertSnakeToCamel = require("../lib/convertSnakeToCamel");
+const _ = require('lodash');
+const convertSnakeToCamel = require('../lib/convertSnakeToCamel');
 
 const getTypeByTypeId = async (client, typeId) => {
   const { rows } = await client.query(

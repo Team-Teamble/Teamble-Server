@@ -10,16 +10,16 @@ const getProjectIdByUserId = async (client, userId) => {
     WHERE p.user_id = $1
       AND p.is_closed = FALSE;
     `,
-    [userId],
+    [userId]
   );
 
-    /** 
+  /** 
   프로젝트가 존재하는 경우 프로젝트 id 저장
   프로젝트가 존재하지 않는 경우 null 저장
   */
   const projectId = rows[0] ? rows[0].id : null;
 
-  return convertSnakeToCamel.keysToCamel(projectId)
+  return convertSnakeToCamel.keysToCamel(projectId);
 };
 
 module.exports = { getProjectIdByUserId };

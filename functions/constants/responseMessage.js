@@ -45,6 +45,7 @@ module.exports = {
   GET_USER_PROFILE_METADATA_SUCCESS: '유저 프로필 수정 메타데이터 받기에 성공하였습니다',
   UPDATE_USER_PROFILE_SUCCESS: '유저 프로필 수정에 성공하였습니다',
   UPDATE_USER_PHOTO_SUCCESS: '유저 프로필 사진 변경에 성공하였습니다',
+  UPDATE_USER_BLANK_BOX: '모든 항목을 입력해주세요',
 
   // 콕 찌르기, 팀 지원하기
   POKE_USER_SUCCESS: '콕 찌르기에 성공하였습니다',

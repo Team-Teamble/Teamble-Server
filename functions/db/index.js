@@ -7,4 +7,6 @@ module.exports = {
   periodDB: require('./period'),
   goalDB: require('./goal'),
   fieldDB: require('./field'),
+  userPositionDB: require('./userPosition'),
+  userFieldDB: require('./userField'),
 };

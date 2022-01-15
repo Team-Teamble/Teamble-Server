@@ -74,4 +74,19 @@ const getTypeIdByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(typeId);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId };
+// 유저 프로필 수정
+const updateUserProfile = async (client, userId, phone, university, major, area, intro, typeId, description) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET phone = $1, university = $2, major = $3, area = $4, intro = $5, type_id = $6, description = $7, updated_at = now()
+    WHERE u.id = $8
+    RETURNING id, id_firebase, name, email, phone, photo, university, major, area, intro, description, is_checked, created_at, updated_at, is_deleted
+    `,
+    [phone, university, major, area, intro, typeId, description, userId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile };

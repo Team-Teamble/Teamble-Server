@@ -8,10 +8,10 @@ const getPeriod = async (client) => {
     SELECT *
     FROM "period" p
     ORDER BY id ASC
-    `
+    `,
   );
   /**
-  기간 정보가 존재하는 경우 기간 객체 저장
+  기간 정보가 존재하는 경우 기간 객체의 배열 저장
   기간 정보가 존재하지 않는 경우 [] 저장
   */
   const period = rows ? rows : [];

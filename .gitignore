@@ -65,5 +65,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
-#Firebase service account
+#Firebase production service account
 teamble-server-firebase-adminsdk-qy3jy-abef10cd0d.json
+
+#Firebase development service account
+teamble-server-local-firebase-adminsdk-uk7hm-5f9d2ca9b9.json

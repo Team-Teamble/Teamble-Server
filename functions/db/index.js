@@ -9,4 +9,10 @@ module.exports = {
   fieldDB: require('./field'),
   userPositionDB: require('./userPosition'),
   userFieldDB: require('./userField'),
+  projectPeriodDB: require('./projectPeriod'),
+  projectPositionDB: require('./projectPosition'),
+  projectGoalDB: require('./projectGoal'),
+  projectTagDB: require('./projectTag'),
+  projectFieldDB: require('./projectField'),
+  memberDB: require('./member'),
 };

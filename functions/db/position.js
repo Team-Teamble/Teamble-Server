@@ -26,7 +26,7 @@ const getPositionByPositionId = async (client, positionId) => {
   const { rows } = await client.query(
     `
     SELECT *
-    FROM "position" p
+    FROM "position" p 
     WHERE p.id = ANY($1)
     ORDER BY id ASC;
     `,

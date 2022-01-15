@@ -10,7 +10,7 @@ const getProjectIdByUserId = async (client, userId) => {
     WHERE p.user_id = $1
       AND p.is_closed = FALSE;
     `,
-    [userId]
+    [userId],
   );
 
   /** 
@@ -22,4 +22,17 @@ const getProjectIdByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(projectId);
 };
 
-module.exports = { getProjectIdByUserId };
+const addProject = async (client, userId, title, intro, startDate, endDate, area, description) => {
+  const { rows } = await client.query(
+    `
+    INSERT INTO project
+    (user_id, title, intro, start_date, end_date, area, description)
+    VALUES($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *
+    `,
+    [userId, title, intro, startDate, endDate, area, description],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = { getProjectIdByUserId, addProject };

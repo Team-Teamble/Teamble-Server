@@ -8,7 +8,7 @@ const getGoal = async (client) => {
     SELECT *
     FROM "goal" g
     ORDER BY id ASC
-    `
+    `,
   );
   /**
   목표 정보가 존재하는 경우 기간 객체 저장
@@ -17,4 +17,19 @@ const getGoal = async (client) => {
   const goal = rows ? rows : [];
   return convertSnakeToCamel.keysToCamel(goal);
 };
-module.exports = { getGoal };
+
+const getGoalByGoalId = async (client, goalId) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "goal" g
+    WHERE g.id = $1
+    ORDER BY id ASC;
+    `,
+    [goalId],
+  );
+  const goal = rows[0] ? rows[0] : null;
+  return convertSnakeToCamel.keysToCamel(goal);
+};
+
+module.exports = { getGoal, getGoalByGoalId };

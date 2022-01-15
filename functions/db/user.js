@@ -42,6 +42,19 @@ const getUserByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
+// id, 이름, 사진을 포함한 유저 정보 조회
+const getUserByUserIdNamePhoto = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    SELECT id, id_firebase, name, email, phone, photo, university, major, area, intro, description, is_checked, created_at, updated_at, is_deleted
+    FROM "user" u
+    WHERE u.id = $1
+    `,
+    [userId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
 const getUserIdByIdFirebase = async (client, idFirebase) => {
   const { rows } = await client.query(
     `

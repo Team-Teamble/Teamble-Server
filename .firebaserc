@@ -1,5 +1,7 @@
 {
   "projects": {
+    "dev": "teamble-server-local",
+    "prod": "teamble-server",
     "default": "teamble-server"
   }
 }

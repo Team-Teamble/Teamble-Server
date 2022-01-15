@@ -37,4 +37,20 @@ const getTag = async (client) => {
   return convertSnakeToCamel.keysToCamel(tag);
 };
 
-module.exports = { getTagByTypeId, getTag };
+// 협업 성향 태그 배열로 객체 가져오기
+const getTagByTagId = async (client, tagId) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "tag" t
+    WHERE t.id = ANY($1)
+    ORDER BY id ASC;
+    `,
+    [tagId],
+  );
+  const tag = rows ? rows : [];
+
+  return convertSnakeToCamel.keysToCamel(tag);
+};
+
+module.exports = { getTagByTypeId, getTag, getTagByTagId };

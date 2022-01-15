@@ -17,4 +17,22 @@ const getPeriod = async (client) => {
   const period = rows ? rows : [];
   return convertSnakeToCamel.keysToCamel(period);
 };
-module.exports = { getPeriod };
+
+// 기간 정보 가져오기
+const getPeriodByPeriodId = async (client, periodId) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "period" p
+    WHERE p.id = $1
+    ORDER BY id ASC;
+    `,
+    [periodId],
+  );
+
+  const period = rows[0] ? rows[0] : null;
+
+  return convertSnakeToCamel.keysToCamel(period);
+};
+
+module.exports = { getPeriod, getPeriodByPeriodId };

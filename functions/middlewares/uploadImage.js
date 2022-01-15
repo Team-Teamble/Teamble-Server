@@ -28,7 +28,7 @@ const uploadImage = (req, res, next) => {
   // req.body로 들어오는 게 파일일 경우 처리
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
     if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
-      return res.status(400).json({ error: 'Wrong file type submitted' });
+      return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.FILE_TYPE_ERROR));
     }
     // my.image.png => ['my', 'image', 'png']
     const imageExtension = filename.split('.')[filename.split('.').length - 1];

@@ -1,9 +1,18 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-module.exports = {
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DB,
-  password: process.env.DB_PASSWORD,
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = {
+    user: process.env.PROD_DB_USER,
+    host: process.env.PROD_DB_HOST,
+    database: process.env.PROD_DB_DB,
+    password: process.env.PROD_DB_PASSWORD,
+  };
+} else {
+  module.exports = {
+    user: process.env.DEV_DB_USER,
+    host: process.env.DEV_DB_HOST,
+    database: process.env.DEV_DB_DB,
+    password: process.env.DEV_DB_PASSWORD,
+  };
+}

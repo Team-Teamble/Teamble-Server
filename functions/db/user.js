@@ -89,4 +89,18 @@ const updateUserProfile = async (client, userId, phone, university, major, area,
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile };
+const updateUserProfilePhoto = async (client, userId, imageUrl) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET photo = $1, updated_at = now()
+    WHERE u.id = $2
+    RETURNING photo
+    `,
+    [imageUrl, userId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto };

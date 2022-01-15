@@ -24,8 +24,10 @@ module.exports = {
   READ_TOP_PROJECT_SUCCESS: '주목할만한 프로젝트 조회에 성공하였습니다',
 
   // 프로젝트
+  PROJECT_BLANK_BOX: '모든 항목을 입력해주세요',
   GET_PROJECT_METADATA_SUCCESS: '프로젝트 뷰 메타데이터 받기에 성공하였습니다',
   CREATE_PROJECT_SUCCESS: '프로젝트 생성에 성공하였습니다',
+  CREATE_PROJECT_PHOTO_SUCCESS: '프로젝트 사진 추가에 성공하였습니다',
   ADD_PROJECT_MEMBER_SUCCESS: '프로젝트 팀 구성원 추가에 성공하였습니다',
 
   // 프로젝트 찾기

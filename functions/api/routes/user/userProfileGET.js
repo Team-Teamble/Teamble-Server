@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     // 1-1. 유저 정보 가져오기
     let user = await userDB.getUserByUserId(client, userId);
 
-    if (!user) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+    if (!user) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
 
     // 1-2. 프로젝트 id 가져오기
     const projectId = await projectDB.getProjectIdByUserId(client, user.id);

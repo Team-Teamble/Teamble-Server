@@ -240,4 +240,30 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail, getMemberByFilter };
+// 프로젝트 id로 해당 유저의 id, name, photo 불러오기
+const getUserByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT u.id, u.name, u.photo
+    FROM "project" pj
+    INNER JOIN "user" u
+      ON pj.user_id = u.id
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = {
+  addUser,
+  getUserByIdFirebase,
+  getUserByUserId,
+  getUserIdByIdFirebase,
+  getTypeIdByUserId,
+  updateUserProfile,
+  updateUserProfilePhoto,
+  getUserByEmail,
+  getMemberByFilter,
+  getUserByProjectId,
+};

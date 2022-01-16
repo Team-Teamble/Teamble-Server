@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       },
     };
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_FIND_METADATA_SUCCESS, data));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_SUCCESS_METADATA_SUCCESS, data));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

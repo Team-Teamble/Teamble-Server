@@ -25,10 +25,14 @@ module.exports = {
 
   // 프로젝트
   PROJECT_BLANK_BOX: '모든 항목을 입력해주세요',
+  PROJECT_EMAIL_BLANK_BOX: '이메일을 입력해주세요.',
   GET_PROJECT_METADATA_SUCCESS: '프로젝트 뷰 메타데이터 받기에 성공하였습니다',
   CREATE_PROJECT_SUCCESS: '프로젝트 생성에 성공하였습니다',
   CREATE_PROJECT_PHOTO_SUCCESS: '프로젝트 사진 추가에 성공하였습니다',
+
+  // 프로젝트 팀 구성원
   ADD_PROJECT_MEMBER_SUCCESS: '프로젝트 팀 구성원 추가에 성공하였습니다',
+  NO_EXIST_EMAIL: '등록되지 않은 이메일입니다',
 
   // 프로젝트 찾기
   GET_PROJECT_FIND_METADATA_SUCCESS: '프로젝트 찾기 뷰 메타데이터 받기에 성공하였습니다',

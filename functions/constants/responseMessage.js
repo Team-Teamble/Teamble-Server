@@ -37,7 +37,7 @@ module.exports = {
   // 프로젝트 찾기
   GET_PROJECT_SEARCH_METADATA_SUCCESS: '프로젝트 찾기 뷰 메타데이터 받기에 성공하였습니다',
   GET_PROJECT_SEARCH_SUCCESS: '프로젝트 찾기 뷰 조회에 성공하였습니다',
-  READ_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
+  GET_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
 
   // 프로젝트 삭제
   DELETE_PROJECT_SUCCESS: '프로젝트 모집완료에 성공하였습니다.',

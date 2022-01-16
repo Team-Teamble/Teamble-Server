@@ -3,7 +3,7 @@ const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { positionDB, tagDB, fieldDB } = require('../../../db');
+const { periodDB, positionDB, goalDB, tagDB, fieldDB } = require('../../../db');
 
 module.exports = async (req, res) => {
   let client;
@@ -11,21 +11,27 @@ module.exports = async (req, res) => {
   try {
     client = await db.connect(req);
 
+    const period = await periodDB.getPeriod(client);
+
     const position = await positionDB.getPosition(client);
+
+    const goal = await goalDB.getGoal(client);
 
     const tag = await tagDB.getTag(client);
 
     const field = await fieldDB.getField(client);
 
     const data = {
-      member: {
+      project: {
+        period,
         position,
+        goal,
         tag,
         field,
       },
     };
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_SEARCH_METADATA_SUCCESS, data));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_PROJECT_SEARCH_SUCCESS, data));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

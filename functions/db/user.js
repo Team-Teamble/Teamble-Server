@@ -42,6 +42,19 @@ const getUserByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
+// email로 id, 이름, 사진을 포함한 유저 정보 조회
+const getUserByEmail = async (client, email) => {
+  const { rows } = await client.query(
+    `
+    SELECT id, name, photo
+    FROM "user" u
+    WHERE u.email = $1
+    `,
+    [email],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
 const getUserIdByIdFirebase = async (client, idFirebase) => {
   const { rows } = await client.query(
     `
@@ -227,4 +240,4 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getMemberByFilter };
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail, getMemberByFilter };

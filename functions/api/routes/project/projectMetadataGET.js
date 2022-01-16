@@ -3,7 +3,7 @@ const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { periodDB, positionDB, goalDB, typeDB, fieldDB } = require('../../../db');
+const { periodDB, positionDB, goalDB, tagDB, fieldDB, positionNumDB } = require('../../../db');
 
 module.exports = async (req, res) => {
   let client;
@@ -11,22 +11,34 @@ module.exports = async (req, res) => {
   try {
     client = await db.connect(req);
 
-    const period = await periodDB.getPeriod(client);
+    const period = await periodDB.getPeriodWithoutAll(client);
 
-    const position = await positionDB.getPosition(client);
+    const position = await positionDB.getPositionWithoutAll(client);
 
-    const goal = await goalDB.getGoal(client);
+    const positionNum = await positionNumDB.getPositionNum(client);
 
-    const type = await typeDB.getType(client);
+    const goal = await goalDB.getGoalWithoutAll(client);
 
-    const field = await fieldDB.getField(client);
+    const tag = await tagDB.getTagWithoutAll(client);
+
+    const field = await fieldDB.getFieldWithoutAll(client);
+
+    let positionResult = [];
+
+    position.map((position, pindex) => {
+      positionResult.push({
+        id: position.id,
+        name: position.name,
+        positionNum: positionNum,
+      });
+    });
 
     const data = {
       project: {
         period,
-        position,
+        position: positionResult,
         goal,
-        type,
+        tag,
         field,
       },
     };

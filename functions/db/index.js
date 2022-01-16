@@ -4,6 +4,7 @@ module.exports = {
   typeDB: require('./type'),
   tagDB: require('./tag'),
   positionDB: require('./position'),
+  positionNumDB: require('./positionNum'),
   periodDB: require('./period'),
   goalDB: require('./goal'),
   fieldDB: require('./field'),

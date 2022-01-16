@@ -18,6 +18,26 @@ const getPeriod = async (client) => {
   return convertSnakeToCamel.keysToCamel(period);
 };
 
+// period 테이블의 '전체' row를 제외한 모든 정보 가져오기
+const getPeriodWithoutAll = async (client) => {
+  const { rows } = await client.query(
+    `
+    SELECT *
+    FROM "period" p
+    WHERE p.id > 1
+    ORDER BY id ASC;
+    `,
+  );
+
+  /**
+  기간 정보가 존재하는 경우 기간 객체의 배열 저장
+  기간 정보가 존재하지 않는 경우 [] 저장
+  */
+  const getPeriodWithoutAll = rows ? rows : [];
+
+  return convertSnakeToCamel.keysToCamel(getPeriodWithoutAll);
+};
+
 // 기간 정보 가져오기
 const getPeriodByPeriodId = async (client, periodId) => {
   const { rows } = await client.query(
@@ -35,4 +55,4 @@ const getPeriodByPeriodId = async (client, periodId) => {
   return convertSnakeToCamel.keysToCamel(period);
 };
 
-module.exports = { getPeriod, getPeriodByPeriodId };
+module.exports = { getPeriod, getPeriodByPeriodId, getPeriodWithoutAll };

@@ -42,15 +42,15 @@ const getUserByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-// id, 이름, 사진을 포함한 유저 정보 조회
-const getUserByUserIdNamePhoto = async (client, userId) => {
+// email로 id, 이름, 사진을 포함한 유저 정보 조회
+const getUserByEmail = async (client, email) => {
   const { rows } = await client.query(
     `
-    SELECT id, id_firebase, name, email, phone, photo, university, major, area, intro, description, is_checked, created_at, updated_at, is_deleted
+    SELECT id, name, photo
     FROM "user" u
-    WHERE u.id = $1
+    WHERE u.email = $1
     `,
-    [userId],
+    [email],
   );
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
@@ -116,4 +116,4 @@ const updateUserProfilePhoto = async (client, userId, imageUrl) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto };
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail };

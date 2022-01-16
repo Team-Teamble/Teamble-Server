@@ -3,7 +3,7 @@ const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { periodDB, positionDB, goalDB, typeDB, fieldDB, userDB } = require('../../../db');
+const { userDB } = require('../../../db');
 
 module.exports = async (req, res) => {
   const { email } = req.body;

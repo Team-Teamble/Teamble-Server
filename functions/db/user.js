@@ -116,4 +116,128 @@ const updateUserProfilePhoto = async (client, userId, imageUrl) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail };
+// 필터링된 팀원 찾기 뷰 조회
+const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page) => {
+  let positionUserId; // 협업 포지션 필터에 해당하는 유저 id
+  let tagUserId; // 협업 성향 필터에 해당하는 유저 id
+  let fieldUserId; // 관심 프로젝트 필터에 해당하는 유저 id
+
+  if (positionId === 1) {
+    // 협업 포지션 - 전체
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (DISTINCT up.user_id) AS user_id
+      FROM "user_position" up;
+      `,
+    );
+    positionUserId = rows[0].user_id ? rows[0].user_id : [];
+  } else {
+    // 협업 포지션 - 나머지
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (DISTINCT u.id) AS user_id
+      FROM "user" u
+      INNER JOIN "user_position" up
+          ON up.user_id = u.id
+      WHERE up.position_id = $1;
+      `,
+      [positionId],
+    );
+    positionUserId = rows[0].user_id ? rows[0].user_id : [];
+  }
+
+  if (tagId.includes(1)) {
+    // 협업 성향 - 전체
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (u.id) AS user_id
+      FROM "user" u
+      WHERE u.type_id IS NOT NULL;
+      `,
+    );
+    tagUserId = rows[0].user_id ? rows[0].user_id : [];
+  } else {
+    // 협업 성향 - 나머지
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (DISTINCT u.id) AS user_id
+      FROM "user" u
+      INNER JOIN "type_tag" tt
+          ON tt.type_id = u.type_id
+      WHERE tt.tag_id = ANY($1);
+      `,
+      [tagId],
+    );
+    tagUserId = rows[0].user_id ? rows[0].user_id : [];
+  }
+
+  if (fieldId.includes(1)) {
+    // 관심 프로젝트 - 전체
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (DISTINCT uf.user_id) AS user_id
+      FROM "user_field" uf;
+      `,
+    );
+    fieldUserId = rows[0].user_id ? rows[0].user_id : [];
+  } else {
+    // 관심 프로젝트 - 나머지
+    const { rows } = await client.query(
+      `
+      SELECT ARRAY_AGG (DISTINCT u.id) AS user_id
+      FROM "user" u
+      INNER JOIN "user_field" uf
+          ON uf.user_id = u.id
+      WHERE uf.field_id = ANY($1);
+      `,
+      [fieldId],
+    );
+    fieldUserId = rows[0].user_id ? rows[0].user_id : [];
+  }
+
+  // 최종적으로 반환할 userId를 교집합으로 구하기
+  const userId = _.intersection(positionUserId, tagUserId, fieldUserId);
+
+  const limit = count; // 한 번에 받을 팀원 개수
+  let offset = (page - 1) * count; // 스킵할 row 개수
+
+  // 최종 userId 배열과 limit, offset을 사용하여 필터에 해당하는 팀원 정보 배열 구하기
+  const { rows } = await client.query(
+    `
+    SELECT m.id, m.name, m.photo,
+          ARRAY_AGG (DISTINCT p.name) AS position,
+          tp.name AS type,
+          ARRAY_AGG (DISTINCT tg.name) AS tag,
+          ARRAY_AGG (DISTINCT f.name) AS field
+    FROM (
+        SELECT u.*
+        FROM "user" u
+        WHERE u.id = ANY($1)
+        AND u.is_deleted = false
+        ORDER BY u.created_at DESC
+        LIMIT $2
+        OFFSET $3
+        ) m
+    INNER JOIN "user_position" up
+    ON up.user_id = m.id
+    INNER JOIN "position" p
+    ON p.id = up.position_id
+    INNER JOIN "type" tp
+    ON m.type_id = tp.id
+    INNER JOIN "type_tag" tt
+    ON tt.type_id = tp.id
+    INNER JOIN "tag" tg
+    ON tg.id = tt.tag_id
+    INNER JOIN "user_field" uf
+    ON uf.user_id = m.id
+    INNER JOIN "field" f
+    ON f.id = uf.field_id
+    GROUP BY (m.id, m.name, m.photo, tp.name);
+    `,
+    [userId, limit, offset],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail, getMemberByFilter };

@@ -3,7 +3,7 @@ const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { periodDB, positionDB, goalDB, typeDB, fieldDB } = require('../../../db');
+const { periodDB, positionDB, goalDB, tagDB, fieldDB } = require('../../../db');
 
 module.exports = async (req, res) => {
   let client;
@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
 
     const goal = await goalDB.getGoal(client);
 
-    const type = await typeDB.getType(client);
+    const tag = await tagDB.getTag(client);
 
     const field = await fieldDB.getField(client);
 
@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
         period,
         position,
         goal,
-        type,
+        tag,
         field,
       },
     };

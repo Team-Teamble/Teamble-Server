@@ -15,4 +15,20 @@ const addFieldProject = async (client, projectId, fieldId) => {
   });
 };
 
-module.exports = { addFieldProject };
+const getFieldByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT pf.field_id AS id, f.name AS name
+    FROM "project" pj
+    INNER JOIN "project_field" pf
+      ON pj.id = pf.project_id
+    INNER JOIN "field" f
+      ON pf.field_id = f.id
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { addFieldProject, getFieldByProjectId };

@@ -35,16 +35,16 @@ module.exports = {
   NO_EXIST_EMAIL: '등록되지 않은 이메일입니다',
 
   // 프로젝트 찾기
-  GET_PROJECT_FIND_METADATA_SUCCESS: '프로젝트 찾기 뷰 메타데이터 받기에 성공하였습니다',
-  GET_PROJECT_FIND_SUCCESS: '프로젝트 찾기 뷰 조회에 성공하였습니다',
+  GET_PROJECT_SEARCH_METADATA_SUCCESS: '프로젝트 찾기 뷰 메타데이터 받기에 성공하였습니다',
+  GET_PROJECT_SEARCH_SUCCESS: '프로젝트 찾기 뷰 조회에 성공하였습니다',
   READ_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
 
   // 프로젝트 삭제
   DELETE_PROJECT_SUCCESS: '프로젝트 모집완료에 성공하였습니다.',
 
   // 팀원 찾기
-  GET_MEMBER_FIND_METADATA_SUCCESS: '팀원 찾기 뷰 메타데이터 받기에 성공하였습니다',
-  GET_MEMBER_FIND_SUCCESS: '팀원 찾기 뷰 조회에 성공하였습니다',
+  GET_MEMBER_SEARCH_METADATA_SUCCESS: '팀원 찾기 뷰 메타데이터 받기에 성공하였습니다',
+  GET_MEMBER_SEARCH_SUCCESS: '팀원 찾기 뷰 조회에 성공하였습니다',
 
   // 마이페이지, 팀원 상세뷰
   GET_USER_PROFILE_SUCCESS: '유저 프로필 가져오기에 성공하였습니다',

@@ -58,4 +58,22 @@ const getPositionNumByPositionId = async (client, projectId) => {
   return convertSnakeToCamel.keysToCamel(position);
 };
 
-module.exports = { addPositionProject, getPositionByPositionId, getPositionNumByPositionId };
+const getPositionByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT pp.position_id AS id ,p.name, json_build_object('id', pp.position_num_id, 'name', pn.name) AS position_Num
+    FROM "project" pj
+    INNER JOIN "project_position" pp
+      ON pj.id = pp.project_id
+    INNER JOIN "position" p
+      ON pp.position_id = p.id
+    INNER JOIN "position_num" pn
+      ON pp.position_num_id = pn.id
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { addPositionProject, getPositionByPositionId, getPositionNumByPositionId, getPositionByProjectId };

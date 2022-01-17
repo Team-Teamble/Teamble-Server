@@ -15,4 +15,20 @@ const addTagProject = async (client, projectId, tagId) => {
   });
 };
 
-module.exports = { addTagProject };
+const getTagByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT pt.tag_id AS id, t.name AS name
+    FROM "project" pj
+    INNER JOIN "project_tag" pt
+      ON pj.id = pt.project_id
+    INNER JOIN "tag" t
+      ON pt.tag_id = t.id
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { addTagProject, getTagByProjectId };

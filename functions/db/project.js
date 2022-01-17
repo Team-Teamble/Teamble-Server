@@ -35,6 +35,55 @@ const addProject = async (client, userId, title, intro, startDate, endDate, area
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
+const isClosedProject = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "project" p
+    SET is_closed = true, updated_at = now()
+    WHERE p.id = $1
+      AND p.is_closed = FALSE;
+    `,
+    [projectId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+// 프로젝트 id로 프로젝트 가져오기 (is_closed 허용)
+const getProjectByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at,
+    is_closed, is_deleted
+    FROM "project" p
+    WHERE p.id = $1;
+    `,
+    [projectId],
+  );
+
+  /**
+  프로젝트가 존재하는 경우 프로젝트 저장
+  프로젝트가 존재하지 않는 경우 null 저장
+  */
+  const project = rows[0] ? rows[0] : null;
+
+  return convertSnakeToCamel.keysToCamel(project);
+};
+
+const updateProjectPhoto = async (client, projectId, imageUrl) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "project" 
+    SET photo = $1, updated_at = now()
+    WHERE id = $2
+    RETURNING photo
+    `,
+    [imageUrl, projectId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
 const getTopProject = async (client) => {
   const { rows } = await client.query(
     `
@@ -68,4 +117,5 @@ const getTopProject = async (client) => {
 
   return convertSnakeToCamel.keysToCamel(rows);
 };
-module.exports = { getProjectIdByUserId, addProject, getTopProject };
+
+module.exports = { getProjectIdByUserId, addProject, isClosedProject, getProjectByProjectId, updateProjectPhoto, getTopProject };

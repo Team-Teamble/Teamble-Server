@@ -32,4 +32,20 @@ const getUserByMemberId = async (client, memberId) => {
   return convertSnakeToCamel.keysToCamel(member);
 };
 
-module.exports = { getUserByMemberId, addMember };
+const getMemberByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT m.user_id AS id, u.name AS name, u.photo AS photo
+    FROM "project" pj
+    INNER JOIN "member" m
+      ON m.project_id = pj.id
+    INNER JOIN "user" u
+      ON m.user_id = u.id   
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { getUserByMemberId, addMember, getMemberByProjectId };

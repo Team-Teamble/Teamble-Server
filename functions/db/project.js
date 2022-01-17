@@ -70,4 +70,18 @@ const getProjectByProjectId = async (client, projectId) => {
   return convertSnakeToCamel.keysToCamel(project);
 };
 
-module.exports = { getProjectIdByUserId, addProject, isClosedProject, getProjectByProjectId };
+const updateProjectPhoto = async (client, projectId, imageUrl) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "project" 
+    SET photo = $1, updated_at = now()
+    WHERE id = $2
+    RETURNING photo
+    `,
+    [imageUrl, projectId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = { getProjectIdByUserId, addProject, isClosedProject, getProjectByProjectId, updateProjectPhoto };

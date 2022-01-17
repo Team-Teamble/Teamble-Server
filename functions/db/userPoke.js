@@ -20,11 +20,30 @@ const pokeUserByUserId = async (client, userPokingId, userPokedId) => {
     `
     UPDATE "user" u
     SET is_checked = false, updated_at = now()
-    WHERE u.id = $1
-    RETURNING photo;
+    WHERE u.id = $1;
     `,
     [userPokedId],
   );
 };
 
-module.exports = { pokeUserByUserId };
+const getPokingUserIdByUserId = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    SELECT ARRAY_AGG(user_poking_id) AS member_id
+    FROM(
+        SELECT up.user_poking_id
+        FROM "user_poke" up
+        WHERE up.user_poked_id = $1
+        AND is_deleted = false
+        ORDER BY up.id DESC
+    ) m;
+    `,
+    [userId],
+  );
+
+  const memberId = rows[0].member_id ? rows[0].member_id : [];
+
+  return convertSnakeToCamel.keysToCamel(memberId);
+};
+
+module.exports = { pokeUserByUserId, getPokingUserIdByUserId };

@@ -16,4 +16,5 @@ module.exports = {
   projectTagDB: require('./projectTag'),
   projectFieldDB: require('./projectField'),
   memberDB: require('./member'),
+  userPokeDB: require('./userPoke'),
 };

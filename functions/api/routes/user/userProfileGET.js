@@ -24,9 +24,6 @@ module.exports = async (req, res) => {
     // 1-2. 프로젝트 id 가져오기
     const projectId = await projectDB.getProjectIdByUserId(client, user.id);
 
-    // 1-3. user 객체에 projectId 를 병합
-    user = _.merge(user, { projectId });
-
     // 2-1. 유저의 타입 id 가져오기 (intger | null)
     const typeId = await userDB.getTypeIdByUserId(client, user.id);
 
@@ -48,15 +45,10 @@ module.exports = async (req, res) => {
     // 4-2. 해당 유저의 필드들 가져오기
     const field = await fieldDB.getFieldByFieldId(client, fieldId);
 
-    res.status(statusCode.OK).send(
-      util.success(statusCode.OK, responseMessage.GET_USER_PROFILE_SUCCESS, {
-        user,
-        type,
-        tag,
-        position,
-        field,
-      }),
-    );
+    // 5. user 객체에 모든 데이터를 병합
+    user = _.merge(user, { projectId, type, tag, position, field });
+
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_USER_PROFILE_SUCCESS, { user }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

@@ -9,7 +9,7 @@ const { userDB, projectDB, typeDB, tagDB, positionDB, fieldDB } = require('../..
 module.exports = async (req, res) => {
   const { userId } = req.params;
 
-  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
+  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
 
   let client;
 

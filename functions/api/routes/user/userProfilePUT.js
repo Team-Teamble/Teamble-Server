@@ -10,8 +10,7 @@ module.exports = async (req, res) => {
   const { userId } = req.params;
   const { positionId, phone, university, major, area, intro, typeId, fieldId, description } = req.body;
 
-  // userId 확인
-  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
+  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
 
   // 모든 값이 들어왔는지 확인
   if (!positionId || !phone || !university || !major || !area || !intro || !typeId || !fieldId || !description)

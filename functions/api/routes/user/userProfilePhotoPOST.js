@@ -9,8 +9,7 @@ module.exports = async (req, res) => {
   const { userId } = req.params;
   const imageUrls = req.imageUrls; // uploadImage 미들웨어에서 next()를 통해 넘어온 req.imageUrls를 사용
 
-  // userId 확인
-  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
+  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
 
   let client;
 

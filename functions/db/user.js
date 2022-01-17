@@ -255,6 +255,61 @@ const getUserByProjectId = async (client, projectId) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
+// 콕 찌르기 당한 유저의 알림 확인 여부(is_checked) 업데이트 후 정보 반환하기
+const updatePokedUser = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET is_checked = true, updated_at = now()
+    WHERE u.id = $1
+    RETURNING u.id, u.is_checked;
+    `,
+    [userId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+const getPokingUserByMemberId = async (client, memberId) => {
+  let { rows } = await client.query(
+    `
+    SELECT m.id, m.name, m.photo,
+          ARRAY_AGG (DISTINCT p.name) AS position,
+          tp.name AS type,
+          ARRAY_AGG (DISTINCT tg.name) AS tag,
+          ARRAY_AGG (DISTINCT f.name) AS field
+    FROM (
+        SELECT u.id, u.name, u.photo, u.type_id
+        FROM "user" u
+        WHERE u.id = ANY($1)
+        AND u.is_deleted = false
+        ) m
+    INNER JOIN "user_position" up
+    ON up.user_id = m.id
+    INNER JOIN "position" p
+    ON p.id = up.position_id
+    INNER JOIN "type" tp
+    ON m.type_id = tp.id
+    INNER JOIN "type_tag" tt
+    ON tt.type_id = tp.id
+    INNER JOIN "tag" tg
+    ON tg.id = tt.tag_id
+    INNER JOIN "user_field" uf
+    ON uf.user_id = m.id
+    INNER JOIN "field" f
+    ON f.id = uf.field_id
+    INNER JOIN "user_poke" upk
+    ON upk.user_poking_id = m.id
+    GROUP BY (m.id, m.name, m.photo, tp.name, upk.id)
+    ORDER BY upk.id DESC;
+    `,
+    [memberId],
+  );
+
+  rows = _.uniqBy(rows, 'id');
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
 module.exports = {
   addUser,
   getUserByIdFirebase,
@@ -266,4 +321,6 @@ module.exports = {
   getUserByEmail,
   getMemberByFilter,
   getUserByProjectId,
+  updatePokedUser,
+  getPokingUserByMemberId,
 };

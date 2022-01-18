@@ -310,6 +310,20 @@ const getPokingUserByMemberId = async (client, memberId) => {
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
+// 팀 지원하기 시 찔림 당한 유저의 is_checked = false
+const updatePokedUserIsChecked = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET is_checked = false, updated_at = now()
+    WHERE u.id = $1
+    RETURNING *
+    `,
+    [userId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
 module.exports = {
   addUser,
   getUserByIdFirebase,
@@ -323,4 +337,5 @@ module.exports = {
   getUserDataByProjectId,
   updatePokedUser,
   getPokingUserByMemberId,
+  updatePokedUserIsChecked,
 };

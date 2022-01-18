@@ -24,9 +24,9 @@ module.exports = async (req, res) => {
     const memberId = await userPokeDB.getPokingUserIdByUserId(client, userId);
 
     // 3. 콕 찌른 유저들의 정보 가져오기
-    const member = await userDB.getPokingUserByMemberId(client, memberId);
+    const memberCard = await userDB.getPokingUserByMemberId(client, memberId);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_POKE_USER_SUCCESS, { user, member }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_POKE_USER_SUCCESS, { user, memberCard }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

@@ -13,9 +13,9 @@ module.exports = async (req, res) => {
     client = await db.connect(req);
 
     // 주목할만한 프로젝트 정보 가져오기
-    let topProject = await projectDB.getTopProject(client);
+    let projectCard = await projectDB.getTopProject(client);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_TOP_PROJECT_SUCCESS, { topProject }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_TOP_PROJECT_SUCCESS, { projectCard }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

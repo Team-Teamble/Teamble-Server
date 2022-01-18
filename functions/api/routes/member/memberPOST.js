@@ -18,9 +18,9 @@ module.exports = async (req, res) => {
   try {
     client = await db.connect(req);
 
-    const member = await userDB.getMemberByFilter(client, positionId, tagId, fieldId, count, page);
+    const memberCard = await userDB.getMemberByFilter(client, positionId, tagId, fieldId, count, page);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_FIND_SUCCESS, { member }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_FIND_SUCCESS, { memberCard }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

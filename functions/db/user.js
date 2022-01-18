@@ -214,7 +214,6 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
         FROM "user" u
         WHERE u.id = ANY($1)
         AND u.is_deleted = false
-        ORDER BY u.created_at DESC
         LIMIT $2
         OFFSET $3
         ) m
@@ -232,7 +231,8 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
     ON uf.user_id = m.id
     INNER JOIN "field" f
     ON f.id = uf.field_id
-    GROUP BY (m.id, m.name, m.photo, tp.name);
+    GROUP BY (m.id, m.name, m.photo, tp.name, m.created_at)
+    ORDER BY m.created_at DESC;
     `,
     [userId, limit, offset],
   );

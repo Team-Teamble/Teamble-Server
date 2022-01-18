@@ -46,4 +46,16 @@ const getPokingUserIdByUserId = async (client, userId) => {
   return convertSnakeToCamel.keysToCamel(memberId);
 };
 
-module.exports = { pokeUserByUserId, getPokingUserIdByUserId };
+const deletePokingUser = async (client, userId, pokingUserId) => {
+  await client.query(
+    `
+    UPDATE "user_poke"
+    SET is_deleted = true
+    WHERE user_poked_id = $1
+    AND user_poking_id = $2;
+    `,
+    [userId, pokingUserId],
+  );
+};
+
+module.exports = { pokeUserByUserId, getPokingUserIdByUserId, deletePokingUser };

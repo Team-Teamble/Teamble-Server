@@ -241,7 +241,7 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
 };
 
 // 프로젝트 id로 해당 유저의 id, name, photo 불러오기
-const getUserByProjectId = async (client, projectId) => {
+const getUserDataByProjectId = async (client, projectId) => {
   const { rows } = await client.query(
     `
     SELECT u.id, u.name, u.photo
@@ -320,7 +320,7 @@ module.exports = {
   updateUserProfilePhoto,
   getUserByEmail,
   getMemberByFilter,
-  getUserByProjectId,
+  getUserDataByProjectId,
   updatePokedUser,
   getPokingUserByMemberId,
 };

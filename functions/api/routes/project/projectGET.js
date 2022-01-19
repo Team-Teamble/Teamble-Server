@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
 
     const member = await memberDB.getMemberByProjectId(client, projectId);
 
-    const user = await userDB.getUserByProjectId(client, projectId);
+    const user = await userDB.getUserDataByProjectId(client, projectId);
 
     const data = _.merge(projectPeriod, { position }, { goal }, { tag }, { field }, { member }, { user });
 

@@ -8,6 +8,7 @@ const { userDB, projectDB, tagDB, fieldDB, projectPeriodDB, periodDB, projectPos
 const { TOKEN_INVALID, TOKEN_EXPIRED } = require('../../../constants/jwt');
 const jwtHandlers = require('../../../lib/jwtHandlers');
 const dayjs = require('dayjs');
+const slackAPI = require('../../../middlewares/slackAPI');
 
 module.exports = async (req, res) => {
   const { title, intro, periodId, position, goalId, tagId, fieldId, area, startDate, endDate, description, memberId } = req.body;
@@ -119,6 +120,9 @@ module.exports = async (req, res) => {
   } catch (error) {
     console.log(error);
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
+
+    const slackMessage = `[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl} ${req.user ? `uid:${req.user.userId}` : 'req.user 없음'} ${JSON.stringify(error)}`;
+    slackAPI.sendMessageToSlack(slackMessage, slackAPI.DEV_WEB_HOOK_ERROR_MONITORING);
 
     res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
   } finally {

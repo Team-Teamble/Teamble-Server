@@ -15,4 +15,24 @@ const addProjectPoke = async (client, projectId, userId) => {
   return convertSnakeToCamel.keysToCamel(rows[0]);
 };
 
-module.exports = { addProjectPoke };
+// projectId로 memberId 배열 추출
+const getPokingUserByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT ARRAY_AGG(user_id) AS member_id
+    FROM (
+      SELECT pp.user_id
+      FROM "project_poke" pp
+      WHERE pp.project_id = $1 
+      AND pp.is_deleted = false
+      ORDER BY pp.id DESC
+    ) m
+    `,
+    [projectId],
+  );
+  const memberId = rows[0].member_id ? rows[0].member_id : [];
+
+  return convertSnakeToCamel.keysToCamel(memberId);
+};
+
+module.exports = { addProjectPoke, getPokingUserByProjectId };

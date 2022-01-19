@@ -3,7 +3,7 @@ const functions = require('firebase-functions');
 const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
-const { loginInWithEmailAndPassword } = require('firebase/auth');
+const { signInWithEmailAndPassword } = require('firebase/auth');
 const db = require('../../../db/db');
 const { userDB, projectDB, typeDB, tagDB, positionDB, fieldDB } = require('../../../db');
 const slackAPI = require('../../../middlewares/slackAPI');
@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     client = await db.connect(req);
 
     // Firebase Authentication을 통해 유저 인증
-    const userFirebase = await loginInWithEmailAndPassword(firebaseAuth, email, password)
+    const userFirebase = await signInWithEmailAndPassword(firebaseAuth, email, password)
       .then((user) => user)
       .catch((e) => {
         console.log(e);
@@ -36,11 +36,9 @@ module.exports = async (req, res) => {
       if (userFirebase.error.code === 'auth/user-not-found') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
 
-        // email 사용자 속성에 제공된 값이 잘못되었다.
-        //   } else if (userFirebase.error.code === "auth/invalid-email") {
-        //     return res
-        //       .status(statusCode.BAD_REQUEST)
-        //       .json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
+        //email 사용자 속성에 제공된 값이 잘못되었다.
+      } else if (userFirebase.error.code === 'auth/invalid-email') {
+        return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
 
         // 해당 식별자의 비밀번호가 맞지 않는다.
       } else if (userFirebase.error.code === 'auth/wrong-password') {

@@ -61,7 +61,7 @@ const getPositionNumByPositionId = async (client, projectId) => {
 const getPositionByProjectId = async (client, projectId) => {
   const { rows } = await client.query(
     `
-    SELECT pp.position_id AS id ,p.name, json_build_object('id', pp.position_num_id, 'name', pn.name) AS position_Num
+    SELECT pp.position_id AS id, p.name, json_build_object('id', pp.position_num_id, 'name', pn.name) AS position_Num
     FROM "project" pj
     INNER JOIN "project_position" pp
       ON pj.id = pp.project_id

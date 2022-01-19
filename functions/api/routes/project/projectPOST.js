@@ -115,7 +115,6 @@ module.exports = async (req, res) => {
       member: members,
     };
 
-    // 9. user + JWT를 response로 전송
     res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.CREATE_PROJECT_SUCCESS, data));
   } catch (error) {
     console.log(error);

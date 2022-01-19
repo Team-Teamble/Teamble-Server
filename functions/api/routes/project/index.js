@@ -12,4 +12,5 @@ router.post('/photo/:projectId', checkUser, uploadImage, require('./projectPhoto
 router.delete('/:projectId', checkUser, require('./projectDELETE'));
 router.get('/:projectId', require('./projectGET'));
 
+router.post('/search', require('./projectSearchPOST'));
 module.exports = router;

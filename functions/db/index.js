@@ -17,4 +17,5 @@ module.exports = {
   projectFieldDB: require('./projectField'),
   memberDB: require('./member'),
   userPokeDB: require('./userPoke'),
+  projectPokeDB: require('./projectPoke'),
 };

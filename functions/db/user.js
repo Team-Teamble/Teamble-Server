@@ -241,7 +241,7 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
 };
 
 // 프로젝트 id로 해당 유저의 id, name, photo 불러오기
-const getUserByProjectId = async (client, projectId) => {
+const getUserDataByProjectId = async (client, projectId) => {
   const { rows } = await client.query(
     `
     SELECT u.id, u.name, u.photo
@@ -310,6 +310,20 @@ const getPokingUserByMemberId = async (client, memberId) => {
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
+// 팀 지원하기 시 찔림 당한 유저의 is_checked = false
+const updatePokedUserIsChecked = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET is_checked = false, updated_at = now()
+    WHERE u.id = $1
+    RETURNING *
+    `,
+    [userId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
 module.exports = {
   addUser,
   getUserByIdFirebase,
@@ -320,7 +334,8 @@ module.exports = {
   updateUserProfilePhoto,
   getUserByEmail,
   getMemberByFilter,
-  getUserByProjectId,
+  getUserDataByProjectId,
   updatePokedUser,
   getPokingUserByMemberId,
+  updatePokedUserIsChecked,
 };

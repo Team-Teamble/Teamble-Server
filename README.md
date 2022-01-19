@@ -546,6 +546,7 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      |      규원      |  💜  |
 |          프로젝트          |                /project/metadata                |      GET       | 프로젝트 생성 - 더미 데이터 받기  |      현지      |  💜  |
 |                            |                    /project                     |      POST      |           프로젝트 생성           |      현지      |  💜  |
+|                            |       /project/photo/:projectId                 |      POST      |  프로젝트 생성 - 사진 추가   |      현지      |  💜  |
 |                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   |      현지      |  💜  |
 |                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |  💜  |
 |                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        |      현지      |  💜  |

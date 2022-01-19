@@ -4,7 +4,7 @@ const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { projectDB, projectPeriodDB, projectPositionDB, projectGoalDB, projectTagDB, projectFieldDB, memberDB, userDB } = require('../../../db');
+const { projectPeriodDB, projectPositionDB, projectGoalDB, projectTagDB, projectFieldDB, memberDB, userDB } = require('../../../db');
 const dayjs = require('dayjs');
 const slackAPI = require('../../../middlewares/slackAPI');
 
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
 
     const member = await memberDB.getMemberByProjectId(client, projectId);
 
-    const user = await userDB.getUserDataByProjeactId(client, projectId);
+    const user = await userDB.getUserDataByProjectId(client, projectId);
 
     const data = _.merge(projectPeriod, { position }, { goal }, { tag }, { field }, { member }, { user });
 

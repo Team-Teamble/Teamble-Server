@@ -541,29 +541,28 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |            기능            |                       URI                       | HTTP<br>메서드 |               설명                |      담당      | 완료 |
 | :------------------------: | :---------------------------------------------: | :------------: | :-------------------------------: | :------------: | :--: |
 |    회원가입/<br>로그인     |                  /auth/signup                   |      POST      |           유저 회원가입           |      규원      |  💜  |
-|                            |                   /auth/login                   |      POST      |            유저 로그인            |      현지      |
-|                            |                   /auth/login                   |      GET       |         유저 자동 로그인          |      현지      |
-|        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      |      규원      |
+|                            |                   /auth/login                   |      POST      |            유저 로그인            |      현지      |  💜  |
+|                            |                   /auth/login                   |      GET       |         유저 자동 로그인          |      현지      |  💜  |
+|        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      |      규원      |  💜  |
 |          프로젝트          |                /project/metadata                |      GET       | 프로젝트 생성 - 더미 데이터 받기  |      현지      |  💜  |
-|                            |                    /project                     |      POST      |           프로젝트 생성           |      현지      |
-|                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   |      현지      |
-|                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |
-|                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        |      현지      |
-|                            |               /project/:projectId               |      GET       |       프로젝트 상세뷰 조회        |      현지      |
-|                            |               /project/:projectId               |     DELETE     |        프로젝트 모집 완료         |      현지      |
-|         팀원 찾기          |                /member/metadata                 |      GET       |   팀원 찾기 뷰 더미 데이터 받기   |      규원      |
-|                            |                     /member                     |      POST      |          팀원 찾기 조회           |      규원      |
+|                            |                    /project                     |      POST      |           프로젝트 생성           |      현지      |  💜  |
+|                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   |      현지      |  💜  |
+|                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |  💜  |
+|                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        |      현지      |  💜  |
+|                            |               /project/:projectId               |      GET       |       프로젝트 상세뷰 조회        |      현지      |  💜  |
+|                            |               /project/:projectId               |     DELETE     |        프로젝트 모집 완료         |      현지      |  💜  |
+|         팀원 찾기          |                /member/metadata                 |      GET       |   팀원 찾기 뷰 더미 데이터 받기   |      규원      |  💜  |
+|                            |                     /member                     |      POST      |          팀원 찾기 조회           |      규원      |  💜  |
 | 마이페이지/<br>팀원 상세뷰 |              /user/profile/:userId              |      GET       |       유저 프로필 가져오기        |      규원      |  💜  |
-|                            |             /user/profile/metadata              |      GET       | 유저 프로필 수정 더미 데이터 받기 |      규원      |
-|                            |              /user/profile/:userId              |      GET       |         유저 프로필 수정          |      규원      |
-|                            |         /user/profile/photo<br>/:userId         |      POST      |       유저 프로필 사진 변경       |      규원      |
-| 콕 찌르기/<br>팀 지원하기  |                 /user/poke-user                 |      POST      |             콕찌르기              |      규원      |
-|                            |               /user/poke-project                |      POST      |            팀 지원하기            |      현지      |
-|                            |             /user/poke-user/:userId             |      GET       |         나를 찔러본 사람          |      규원      |
-|                            |           /user/poke-project/:userId            |      GET       |     내 프로젝트에 지원한 사람     |      현지      |
-|                            |    /user/poke-user<br>/:userId/:pokingUserId    |     DELETE     |       나를 찔러본 사람 삭제       |      규원      |
-|                            | /user/poke-project<br>/:projectId/:pokingUserId |     DELETE     |  내 프로젝트에 지원한 사람 삭제   |      현지      |
-|    협업 성향<br>테스트     |                                                 |      POST      |   테스트 결과별로 값 저장(예정)   | 현지 <br> 규원 |
+|                            |             /user/profile/metadata              |      GET       | 유저 프로필 수정 더미 데이터 받기 |      규원      |  💜  |
+|                            |              /user/profile/:userId              |      GET       |         유저 프로필 수정          |      규원      |  💜  |
+|                            |         /user/profile/photo<br>/:userId         |      POST      |       유저 프로필 사진 변경       |      규원      |  💜  |
+| 콕 찌르기/<br>팀 지원하기  |                 /user/poke-user                 |      POST      |             콕찌르기              |      규원      |  💜  |
+|                            |               /user/poke-project                |      POST      |            팀 지원하기            |      현지      |  💜  |
+|                            |             /user/poke-user/:userId             |      GET       |         나를 찔러본 사람          |      규원      |  💜  |
+|                            |           /user/poke-project/:userId            |      GET       |     내 프로젝트에 지원한 사람     |      현지      |  💜  |
+|                            |    /user/poke-user<br>/:userId/:pokingUserId    |     DELETE     |       나를 찔러본 사람 삭제       |      규원      |  💜  |
+|                            | /user/poke-project<br>/:projectId/:pokingUserId |     DELETE     |  내 프로젝트에 지원한 사람 삭제   |      현지      |  💜  |
 
 <br>
 
@@ -579,38 +578,42 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |-📋 firebaserc
 |-📋 firebase.json
 |-📋 .gitignore
-|-📁 functions*
-|- 📋 index.js
-|- 📋 package.json
-|- 📋 .gitignore
-|- 📋 .env
-|- 📁 api*
-| |- 📋 index.js
-| |- 📁 routes*
-| |- 📋 index.js
-| |- 📁 auth
-|
-|- 📁 config*
-| |- 📋 dbConfig.js
-| |- 📋 firebaseClient.js
-|
-|- 📁 constants*
-| |- 📋 jwt.js
-| |- 📋 responseMessage.js
-| |- 📋 statusCode.js
-|
-|- 📁 db*
-| |- 📋 db.js
-| |- 📋 index.js
-|
-|- 📁 lib*
-| |- 📋 convertSnakeToCamel.js
-| |- 📋 jwtHandlers.js
-| |- 📋 util.js
-|
-|- 📁 middlewares*
-|- 📋 auth.js
-|- 📋 uploadImage.js
+|-📁 db_query
+|-📁 functions_
+               |- 📋 index.js
+               |- 📋 package.json
+               |- 📋 .gitignore
+               |- 📋 .env
+               |- 📁 api_
+               |         |- 📋 index.js
+               |         |- 📁 routes_
+               |                      |- 📋 index.js
+               |                      |- 📁 auth
+               |                      |- 📁 member
+               |                      |- 📁 project
+               |                      |- 📁 user
+               |
+               |- 📁 config_
+               |            |- 📋 dbConfig.js
+               |            |- 📋 firebaseClient.js
+               |
+               |- 📁 constants_
+               |               |- 📋 jwt.js
+               |               |- 📋 responseMessage.js
+               |               |- 📋 statusCode.js
+               |
+               |- 📁 db_
+               |        |- 📋 db.js
+               |        |- 📋 index.js
+               |
+               |- 📁 lib_
+               |         |- 📋 convertSnakeToCamel.js
+               |         |- 📋 jwtHandlers.js
+               |         |- 📋 util.js
+               |
+               |- 📁 middlewares_
+                                 |- 📋 auth.js
+                                 |- 📋 uploadImage.js
 ```
 
 <br>

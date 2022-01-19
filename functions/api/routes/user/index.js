@@ -12,5 +12,6 @@ router.get('/poke-user/:userId', checkUser, require('./userPokeUserGET'));
 router.post('/poke-project', checkUser, require('./userPokeProjectPOST'));
 router.delete('/poke-user/:userId/:pokingUserId', checkUser, require('./userPokeUserDELETE'));
 router.get('/poke-project/:userId', checkUser, require('./userPokeProjectGET'));
+router.delete('/poke-project/:projectId/:pokingUserId', checkUser, require('./userPokeProjectDELETE'));
 
 module.exports = router;

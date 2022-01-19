@@ -35,4 +35,18 @@ const getPokingUserByProjectId = async (client, projectId) => {
   return convertSnakeToCamel.keysToCamel(memberId);
 };
 
-module.exports = { addProjectPoke, getPokingUserByProjectId };
+const deletePokingUserByUserId = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "project_poke" pp
+    SET is_deleted = true
+    WHERE user_id = $1
+    RETURNING *
+    `,
+    [userId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+module.exports = { addProjectPoke, getPokingUserByProjectId, deletePokingUserByUserId };

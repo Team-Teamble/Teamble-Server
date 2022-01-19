@@ -35,7 +35,6 @@ module.exports = async (req, res) => {
       // 제공된 식별자에 해당하는 기존 사용자 레코드가 없다.
       if (userFirebase.error.code === 'auth/user-not-found') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
-
         //email 사용자 속성에 제공된 값이 잘못되었다.
       } else if (userFirebase.error.code === 'auth/invalid-email') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));

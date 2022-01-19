@@ -214,7 +214,6 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
         FROM "user" u
         WHERE u.id = ANY($1)
         AND u.is_deleted = false
-        ORDER BY u.created_at DESC
         LIMIT $2
         OFFSET $3
         ) m
@@ -232,7 +231,8 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
     ON uf.user_id = m.id
     INNER JOIN "field" f
     ON f.id = uf.field_id
-    GROUP BY (m.id, m.name, m.photo, tp.name);
+    GROUP BY (m.id, m.name, m.photo, tp.name, m.created_at)
+    ORDER BY m.created_at DESC;
     `,
     [userId, limit, offset],
   );
@@ -240,4 +240,140 @@ const getMemberByFilter = async (client, positionId, tagId, fieldId, count, page
   return convertSnakeToCamel.keysToCamel(rows);
 };
 
-module.exports = { addUser, getUserByIdFirebase, getUserByUserId, getUserIdByIdFirebase, getTypeIdByUserId, updateUserProfile, updateUserProfilePhoto, getUserByEmail, getMemberByFilter };
+// 프로젝트 id로 해당 유저의 id, name, photo 불러오기
+const getUserDataByProjectId = async (client, projectId) => {
+  const { rows } = await client.query(
+    `
+    SELECT u.id, u.name, u.photo
+    FROM "project" pj
+    INNER JOIN "user" u
+      ON pj.user_id = u.id
+    WHERE pj.id = $1
+    `,
+    [projectId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+// 콕 찌르기 당한 유저의 알림 확인 여부(is_checked) 업데이트 후 정보 반환하기
+const updatePokedUser = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET is_checked = true, updated_at = now()
+    WHERE u.id = $1
+    RETURNING u.id, u.is_checked;
+    `,
+    [userId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+const getPokingUserByMemberId = async (client, memberId) => {
+  let { rows } = await client.query(
+    `
+    SELECT m.id, m.name, m.photo,
+          ARRAY_AGG (DISTINCT p.name) AS position,
+          tp.name AS type,
+          ARRAY_AGG (DISTINCT tg.name) AS tag,
+          ARRAY_AGG (DISTINCT f.name) AS field
+    FROM (
+        SELECT u.id, u.name, u.photo, u.type_id
+        FROM "user" u
+        WHERE u.id = ANY($1)
+        AND u.is_deleted = false
+        ) m
+    INNER JOIN "user_position" up
+    ON up.user_id = m.id
+    INNER JOIN "position" p
+    ON p.id = up.position_id
+    INNER JOIN "type" tp
+    ON m.type_id = tp.id
+    INNER JOIN "type_tag" tt
+    ON tt.type_id = tp.id
+    INNER JOIN "tag" tg
+    ON tg.id = tt.tag_id
+    INNER JOIN "user_field" uf
+    ON uf.user_id = m.id
+    INNER JOIN "field" f
+    ON f.id = uf.field_id
+    INNER JOIN "user_poke" upk
+    ON upk.user_poking_id = m.id
+    GROUP BY (m.id, m.name, m.photo, tp.name, upk.id)
+    ORDER BY upk.id DESC;
+    `,
+    [memberId],
+  );
+
+  rows = _.uniqBy(rows, 'id');
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+// 팀 지원하기 시 찔림 당한 유저의 is_checked = false
+const updatePokedUserIsChecked = async (client, userId) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "user" u
+    SET is_checked = false, updated_at = now()
+    WHERE u.id = $1
+    RETURNING *
+    `,
+    [userId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+// memberId 배열로 member 정보 추출
+const getMemberByMemberId = async (client, memberId) => {
+  console.log('membeId: ', memberId);
+  let { rows } = await client.query(
+    `
+    SELECT m.id, m.name, m.photo, ARRAY_AGG(DISTINCT p.name) AS position,
+    tp.name AS type, ARRAY_AGG(DISTINCT tg.name) AS tag, ARRAY_AGG(DISTINCT f.name) AS field
+    FROM (
+        SELECT u.id, u.name, u.photo, u.type_id
+        FROM "user" u
+        WHERE u.id = ANY($1)
+        AND u.is_deleted = false
+        ) m
+    INNER JOIN "user_position" up
+    ON up.user_id = m.id
+    INNER JOIN "position" p
+    ON p.id = up.position_id
+    INNER JOIN "type" tp
+    ON tp.id = m.type_id
+    INNER JOIN "type_tag" tt
+    ON tt.type_id = tp.id
+    INNER JOIN "tag" tg
+    ON tg.id = tt.tag_id
+    INNER JOIN "user_field" uf
+    ON uf.user_id = m.id
+    INNER JOIN "field" f
+    ON f.id = uf.field_id
+    INNER JOIN "project_poke" pp
+    ON pp.user_id = m.id
+    GROUP BY (m.id, m.name, m.photo, tp.name, pp.id)
+    ORDER BY pp.id DESC
+    `,
+    [memberId],
+  );
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = {
+  addUser,
+  getUserByIdFirebase,
+  getUserByUserId,
+  getUserIdByIdFirebase,
+  getTypeIdByUserId,
+  updateUserProfile,
+  updateUserProfilePhoto,
+  getUserByEmail,
+  getMemberByFilter,
+  getUserDataByProjectId,
+  updatePokedUser,
+  getPokingUserByMemberId,
+  updatePokedUserIsChecked,
+  getMemberByMemberId,
+};

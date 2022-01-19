@@ -1,26 +1,21 @@
+const _ = require('lodash');
 const functions = require('firebase-functions');
 const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
-const { userDB } = require('../../../db');
+const { projectDB } = require('../../../db');
 
 module.exports = async (req, res) => {
-  const { positionId, tagId, fieldId, count, page } = req.body;
-
-  // 모든 필터값이 있는지 확인
-  if (!positionId || !tagId || !fieldId || !count || !page) {
-    return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
-  }
-
   let client;
 
   try {
     client = await db.connect(req);
 
-    const memberCard = await userDB.getMemberByFilter(client, positionId, tagId, fieldId, count, page);
+    // 주목할만한 프로젝트 정보 가져오기
+    let projectCard = await projectDB.getTopProject(client);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_FIND_SUCCESS, { memberCard }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_TOP_PROJECT_SUCCESS, { projectCard }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

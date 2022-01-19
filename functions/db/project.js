@@ -70,4 +70,52 @@ const getProjectByProjectId = async (client, projectId) => {
   return convertSnakeToCamel.keysToCamel(project);
 };
 
-module.exports = { getProjectIdByUserId, addProject, isClosedProject, getProjectByProjectId };
+const updateProjectPhoto = async (client, projectId, imageUrl) => {
+  const { rows } = await client.query(
+    `
+    UPDATE "project" 
+    SET photo = $1, updated_at = now()
+    WHERE id = $2
+    RETURNING photo
+    `,
+    [imageUrl, projectId],
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows[0]);
+};
+
+const getTopProject = async (client) => {
+  const { rows } = await client.query(
+    `
+    SELECT a.id, a.title, a.intro, a.photo, a.start_date, a.end_date, a.is_closed, JSON_AGG(a.position) AS position,
+       JSON_BUILD_OBJECT('id', a.user_id, 'name', a.user_name, 'photo', a.user_photo) AS user
+    FROM(
+        SELECT t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed,
+          JSON_BUILD_OBJECT('id', pp.position_id, 'name', p.name, 'num', pn.name) AS position,
+              u.id AS user_id, u.name AS user_name, u.photo AS user_photo
+        FROM (
+        SELECT p.*
+        FROM "project" p
+        WHERE p.is_closed = FALSE
+        AND p.is_deleted = FALSE
+        ORDER BY p.created_at DESC
+        ) t
+    INNER JOIN "project_position" pp
+    ON pp.project_id = t.id
+    INNER JOIN "position" p
+    ON p.id = pp.position_id
+    INNER JOIN "position_num" pn
+    ON pn.id = pp.position_num_id
+    INNER JOIN "user" u
+    ON u.id = t.user_id
+    GROUP BY (t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed, p.name, pp.position_id, p.name, pn.name, u.id)
+    ) a
+    GROUP BY a.id, a.title, a.intro, a.photo, a.start_date, a.end_date, a.is_closed, a.user_id, a.user_name, a.user_photo
+    LIMIT 8;
+    `,
+  );
+
+  return convertSnakeToCamel.keysToCamel(rows);
+};
+
+module.exports = { getProjectIdByUserId, addProject, isClosedProject, getProjectByProjectId, updateProjectPhoto, getTopProject };

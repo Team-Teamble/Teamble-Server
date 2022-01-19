@@ -28,7 +28,7 @@ module.exports = {
   PROJECT_EMAIL_BLANK_BOX: '이메일을 입력해주세요.',
   GET_PROJECT_METADATA_SUCCESS: '프로젝트 뷰 메타데이터 받기에 성공하였습니다',
   CREATE_PROJECT_SUCCESS: '프로젝트 생성에 성공하였습니다',
-  CREATE_PROJECT_PHOTO_SUCCESS: '프로젝트 사진 추가에 성공하였습니다',
+  UPDATE_PROJECT_PHOTO_SUCCESS: '프로젝트 사진 변경에 성공하였습니다',
 
   // 프로젝트 팀 구성원
   ADD_PROJECT_MEMBER_SUCCESS: '프로젝트 팀 구성원 추가에 성공하였습니다',
@@ -37,7 +37,7 @@ module.exports = {
   // 프로젝트 찾기
   GET_PROJECT_SEARCH_METADATA_SUCCESS: '프로젝트 찾기 뷰 메타데이터 받기에 성공하였습니다',
   GET_PROJECT_SEARCH_SUCCESS: '프로젝트 찾기 뷰 조회에 성공하였습니다',
-  READ_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
+  GET_PROJECT_SUCCESS: '프로젝트 상세뷰 조회에 성공하였습니다',
 
   // 프로젝트 삭제
   DELETE_PROJECT_SUCCESS: '프로젝트 모집완료에 성공하였습니다.',

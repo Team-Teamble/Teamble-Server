@@ -38,6 +38,8 @@ module.exports = async (req, res) => {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
       } else if (userFirebase.error.code === 'auth/invalid-password') {
         return res.status(statusCode.NOT_FOUND).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
+      } else if (userFirebase.error.code === 'auth/invalid-email') {
+        return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
       } else {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
       }

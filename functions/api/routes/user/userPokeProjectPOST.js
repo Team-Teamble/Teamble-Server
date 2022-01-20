@@ -53,7 +53,7 @@ module.exports = async (req, res) => {
     // 5. user 객체에 모든 데이터를 병합
     user = _.merge(user, { projectId, type, tag, position, field });
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.VOLUNTEER_TEAM_SUCCESS, user));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.VOLUNTEER_TEAM_SUCCESS, { user: user }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

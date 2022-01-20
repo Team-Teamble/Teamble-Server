@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
 
     const data = await projectDB.getProjectByFilter(client, periodId, positionId, goalId, tagId, fieldId, count, page);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_PROJECT_SEARCH_SUCCESS, { project: data }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_PROJECT_SEARCH_SUCCESS, { projectCard: data }));
   } catch (error) {
     console.log(error);
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);

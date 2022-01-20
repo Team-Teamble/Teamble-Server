@@ -36,6 +36,8 @@ module.exports = async (req, res) => {
     if (userFirebase.err) {
       if (userFirebase.error.code === 'auth/email-already-exists') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
+      } else if (userFirebase.error.code === 'auth/invalid-email') {
+        return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
       } else if (userFirebase.error.code === 'auth/invalid-password') {
         return res.status(statusCode.NOT_FOUND).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
       } else {

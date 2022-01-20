@@ -1,3 +1,4 @@
+
 # <img src="https://user-images.githubusercontent.com/78714820/148996218-1fbfd13b-f5e2-48e9-874e-3b38c2106f7e.png" width="180">
 
 <br>
@@ -10,6 +11,39 @@
 
 > 22.01.02 ~ 22.01.22 - SOPT 29th APPJAM
 
+<br>
+<br>
+
+## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> Main Service
+
+### 1.  협업 성향 테스트
+![image](https://user-images.githubusercontent.com/63945197/150314646-abd52fe5-d8ac-4efa-85bc-e21a4fdb93ab.png)
+👉 **협업 성향 테스트를 통해 나의 협업 유형을 알아보고, 태그에 등록하여 나와 잘 맞는 팀원들을 찾아보자**
+<br>
+<br>
+
+###  2. 마이 프로필 설정
+![image](https://user-images.githubusercontent.com/63945197/150316420-da41d6f4-4d9e-4a84-a0da-c9d7af41574e.png)
+👉 **협업 성향 태그와 관심 프로젝트 분야,  협업 포지션 설정과 자기소개 글을 통해 나를 표현하자**
+<br>
+<br>
+
+### 3. 프로젝트 팀 만들기
+![image](https://user-images.githubusercontent.com/63945197/150316811-7ef7a97b-5ead-4c9d-8bc4-ea4a5f2c083f.png)
+👉 **모집 포지션, 선호 협업 성향 및 프로젝트 분야 태그 등을 선택해 나와 잘 맞는 팀원들을 구해보자**
+<br>
+<br>
+
+### 4. 키워드 태그 필터 검색 (프로젝트 & 팀원)
+![image](https://user-images.githubusercontent.com/63945197/150319032-4fcd6c31-f86d-48e9-95a5-6d0133be59b4.png)
+![image](https://user-images.githubusercontent.com/63945197/150319259-aca6225b-bf5d-4374-88bb-304b936795e6.png)
+👉 **키워드 태그 필터 검색을 통해 나와 잘 맞는 프로젝트와 팀원을 찾아보자**
+<br>
+<br>
+
+### 5. 콕 찌르기
+![image](https://user-images.githubusercontent.com/63945197/150319366-446f4bba-2602-43b4-b8fa-58dde1ba972d.png)
+👉 **콕 찌르기를 통해 함께 하고 싶은 프로젝트 팀원에게 관심을 표현해 보자**
 <br>
 <br>
 
@@ -618,3 +652,51 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 ```
 
 <br>
+
+## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> Dependencies Module
+
+   ```jsx
+{
+	  "name": "functions",
+	  "description": "Cloud Functions for Firebase",
+	  "scripts": {
+	    "lint": "eslint .",
+	    "serve": "cross-env NODE_ENV=development firebase emulators:start --only functions --project dev",
+	    "shell": "firebase functions:shell",
+	    "start": "npm run shell",
+	    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions --project prod",
+	    "logs": "firebase functions:log"
+	  },
+	  "engines": {
+	    "node": "16"
+	  },
+	  "main": "index.js",
+	  "dependencies": {
+	    "axios": "^0.25.0",
+	    "busboy": "^0.3.1",
+	    "cookie-parser": "^1.4.6",
+	    "cors": "^2.8.5",
+	    "cross-env": "^7.0.3",
+	    "dayjs": "^1.10.7",
+	    "dotenv": "^11.0.0",
+	    "eslint-config-prettier": "^8.3.0",
+	    "express": "^4.17.2",
+	    "firebase": "^9.6.2",
+	    "firebase-admin": "^9.8.0",
+	    "firebase-functions": "^3.14.1",
+	    "helmet": "^5.0.1",
+	    "hpp": "^0.2.3",
+	    "jsonwebtoken": "^8.5.1",
+	    "lodash": "^4.17.21",
+	    "pg": "^8.7.1"
+	  },
+	  "devDependencies": {
+	    "eslint": "^7.32.0",
+	    "eslint-config-google": "^0.14.0",
+	    "firebase-functions-test": "^0.2.0"
+	  },
+	  "private": true
+	}
+
+```
+

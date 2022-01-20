@@ -5,8 +5,6 @@ const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
 const { userDB, projectDB, tagDB, fieldDB, projectPeriodDB, periodDB, projectPositionDB, goalDB, projectGoalDB, projectTagDB, projectFieldDB, memberDB } = require('../../../db');
-const { TOKEN_INVALID, TOKEN_EXPIRED } = require('../../../constants/jwt');
-const jwtHandlers = require('../../../lib/jwtHandlers');
 const dayjs = require('dayjs');
 const slackAPI = require('../../../middlewares/slackAPI');
 
@@ -87,11 +85,17 @@ module.exports = async (req, res) => {
     // 6.2 분야 불러오기
     const fields = await fieldDB.getFieldByFieldId(client, fieldId);
 
-    // 7.1 팀 구성원 member 테이블에 정보 추가
-    await memberDB.addMember(client, projectId, memberId);
+    let members;
 
-    // 7.2 팀 구성원 불러오기
-    const members = await memberDB.getUserByMemberId(client, memberId);
+    if (!memberId) {
+      members = [];
+    } else {
+      // 7.1 팀 구성원 member 테이블에 정보 추가
+      await memberDB.addMember(client, projectId, memberId);
+
+      // 7.2 팀 구성원 불러오기
+      members = await memberDB.getUserByMemberId(client, memberId);
+    }
 
     const data = _.merge(project, { period }, { position: positionResult }, { goal }, { tag: tags }, { field: fields }, { member: members });
 

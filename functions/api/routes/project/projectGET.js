@@ -22,6 +22,10 @@ module.exports = async (req, res) => {
 
     const projectPeriod = await projectPeriodDB.getPeriodByProjectId(client, projectId);
 
+    if (!projectPeriod) {
+      return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_PROJECT));
+    }
+
     const position = await projectPositionDB.getPositionByProjectId(client, projectId);
 
     const goal = await projectGoalDB.getGoalByProjectId(client, projectId);

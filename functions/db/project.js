@@ -263,7 +263,7 @@ const getProjectByFilter = async (client, periodId, positionId, goalId, tagId, f
     SELECT a.id, a.title, a.intro, a.photo, a.start_date, a.end_date, a.is_closed, JSON_AGG(a.position) AS position,
     JSON_BUILD_OBJECT('id', a.user_id, 'name', a.user_name, 'photo', a.user_photo) AS user
     FROM(
-      SELECT t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed, JSON_BUILD_OBJECT('id', pp.position_id, 'name', p.name, 'num', pn.name) AS position, u.id AS user_id, u.name AS user_name, u.photo AS user_photo
+      SELECT t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed, t.created_at, JSON_BUILD_OBJECT('id', pp.position_id, 'name', p.name, 'num', pn.name) AS position, u.id AS user_id, u.name AS user_name, u.photo AS user_photo
     FROM(
       SELECT pj.*
       FROM "project" pj
@@ -280,10 +280,10 @@ const getProjectByFilter = async (client, periodId, positionId, goalId, tagId, f
     ON pn.id = pp.position_num_id
     INNER JOIN "user" u
     ON u.id = t.user_id
-    GROUP BY (t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed, p.name, pp.position_id, p.name, pn.name, u.id)
+    GROUP BY (t.id, t.title, t.intro, t.photo, t.start_date, t.end_date, t.is_closed, t.created_at, p.name, pp.position_id, p.name, pn.name, u.id)
     ) a
-    GROUP BY a.id, a.title, a.intro, a.photo, a.start_date, a.end_date, a.is_closed, a.user_id, a.user_name, a.user_photo
-    ORDER BY a.id DESC
+    GROUP BY a.id, a.title, a.intro, a.photo, a.start_date, a.end_date, a.is_closed, a.created_at, a.user_id, a.user_name, a.user_photo
+    ORDER BY a.created_at DESC
   `,
     [projectId, limit, offset],
   );

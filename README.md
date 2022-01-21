@@ -620,42 +620,42 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |-📋 firebaserc
 |-📋 firebase.json
 |-📋 .gitignore
-|-📁 db*query
-|-📁 functions*
-|- 📋 index.js
-|- 📋 package.json
-|- 📋 .gitignore
-|- 📋 .env
-|- 📁 api*
-| |- 📋 index.js
-| |- 📁 routes*
-| |- 📋 index.js
-| |- 📁 auth
-| |- 📁 member
-| |- 📁 project
-| |- 📁 user
-|
-|- 📁 config*
-| |- 📋 dbConfig.js
-| |- 📋 firebaseClient.js
-|
-|- 📁 constants*
-| |- 📋 jwt.js
-| |- 📋 responseMessage.js
-| |- 📋 statusCode.js
-|
-|- 📁 db*
-| |- 📋 db.js
-| |- 📋 index.js
-|
-|- 📁 lib*
-| |- 📋 convertSnakeToCamel.js
-| |- 📋 jwtHandlers.js
-| |- 📋 util.js
-|
-|- 📁 middlewares\_
-|- 📋 auth.js
-|- 📋 uploadImage.js
+|-📁 db_query
+|-📁 functions_
+               |- 📋 index.js
+               |- 📋 package.json
+               |- 📋 .gitignore
+               |- 📋 .env
+               |- 📁 api_
+               |         |- 📋 index.js
+               |         |- 📁 routes_
+               |                      |- 📋 index.js
+               |                      |- 📁 auth
+               |                      |- 📁 member
+               |                      |- 📁 project
+               |                      |- 📁 user
+               |
+               |- 📁 config_
+               |            |- 📋 dbConfig.js
+               |            |- 📋 firebaseClient.js
+               |
+               |- 📁 constants_
+               |               |- 📋 jwt.js
+               |               |- 📋 responseMessage.js
+               |               |- 📋 statusCode.js
+               |
+               |- 📁 db_
+               |        |- 📋 db.js
+               |        |- 📋 index.js
+               |
+               |- 📁 lib_
+               |         |- 📋 convertSnakeToCamel.js
+               |         |- 📋 jwtHandlers.js
+               |         |- 📋 util.js
+               |
+               |- 📁 middlewares_
+                                 |- 📋 auth.js
+                                 |- 📋 uploadImage.js
 ```
 
 <br>
@@ -664,45 +664,44 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 
 ```jsx
 {
-	  "name": "functions",
-	  "description": "Cloud Functions for Firebase",
-	  "scripts": {
-	    "lint": "eslint .",
-	    "serve": "cross-env NODE_ENV=development firebase emulators:start --only functions --project dev",
-	    "shell": "firebase functions:shell",
-	    "start": "npm run shell",
-	    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions --project prod",
-	    "logs": "firebase functions:log"
-	  },
-	  "engines": {
-	    "node": "16"
-	  },
-	  "main": "index.js",
-	  "dependencies": {
-	    "axios": "^0.25.0",
-	    "busboy": "^0.3.1",
-	    "cookie-parser": "^1.4.6",
-	    "cors": "^2.8.5",
-	    "cross-env": "^7.0.3",
-	    "dayjs": "^1.10.7",
-	    "dotenv": "^11.0.0",
-	    "eslint-config-prettier": "^8.3.0",
-	    "express": "^4.17.2",
-	    "firebase": "^9.6.2",
-	    "firebase-admin": "^9.8.0",
-	    "firebase-functions": "^3.14.1",
-	    "helmet": "^5.0.1",
-	    "hpp": "^0.2.3",
-	    "jsonwebtoken": "^8.5.1",
-	    "lodash": "^4.17.21",
-	    "pg": "^8.7.1"
-	  },
-	  "devDependencies": {
-	    "eslint": "^7.32.0",
-	    "eslint-config-google": "^0.14.0",
-	    "firebase-functions-test": "^0.2.0"
-	  },
-	  "private": true
-	}
-
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "cross-env NODE_ENV=development firebase emulators:start --only functions --project dev",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions --project prod",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "busboy": "^0.3.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.10.7",
+    "dotenv": "^11.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "express": "^4.17.2",
+    "firebase": "^9.6.2",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1",
+    "helmet": "^5.0.1",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
 ```

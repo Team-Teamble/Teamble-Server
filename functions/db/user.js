@@ -329,32 +329,40 @@ const getMemberByMemberId = async (client, memberId) => {
   console.log('membeId: ', memberId);
   let { rows } = await client.query(
     `
-    SELECT m.id, m.name, m.photo, ARRAY_AGG(DISTINCT p.name) AS position,
-    tp.name AS type, ARRAY_AGG(DISTINCT tg.name) AS tag, ARRAY_AGG(DISTINCT f.name) AS field
+    SELECT DISTINCT *
     FROM (
-        SELECT u.id, u.name, u.photo, u.type_id
-        FROM "user" u
-        WHERE u.id = ANY($1)
-        AND u.is_deleted = false
-        ) m
-    INNER JOIN "user_position" up
-    ON up.user_id = m.id
-    INNER JOIN "position" p
-    ON p.id = up.position_id
-    INNER JOIN "type" tp
-    ON tp.id = m.type_id
-    INNER JOIN "type_tag" tt
-    ON tt.type_id = tp.id
-    INNER JOIN "tag" tg
-    ON tg.id = tt.tag_id
-    INNER JOIN "user_field" uf
-    ON uf.user_id = m.id
-    INNER JOIN "field" f
-    ON f.id = uf.field_id
-    INNER JOIN "project_poke" pp
-    ON pp.user_id = m.id
-    GROUP BY (m.id, m.name, m.photo, tp.name, pp.id)
-    ORDER BY pp.id DESC
+             SELECT m.id,
+                    m.name,
+                    m.photo,
+                    ARRAY_AGG(DISTINCT p.name)  AS position,
+                    tp.name                     AS type,
+                    ARRAY_AGG(DISTINCT tg.name) AS tag,
+                    ARRAY_AGG(DISTINCT f.name)  AS field
+             FROM (
+                      SELECT u.id, u.name, u.photo, u.type_id
+                      FROM "user" u
+                      WHERE u.id = ANY ($1)
+                        AND u.is_deleted = false
+                  ) m
+                      INNER JOIN "user_position" up
+                                 ON up.user_id = m.id
+                      INNER JOIN "position" p
+                                 ON p.id = up.position_id
+                      INNER JOIN "type" tp
+                                 ON tp.id = m.type_id
+                      INNER JOIN "type_tag" tt
+                                 ON tt.type_id = tp.id
+                      INNER JOIN "tag" tg
+                                 ON tg.id = tt.tag_id
+                      INNER JOIN "user_field" uf
+                                 ON uf.user_id = m.id
+                      INNER JOIN "field" f
+                                 ON f.id = uf.field_id
+                      INNER JOIN "project_poke" pp
+                                 ON pp.user_id = m.id
+             GROUP BY (m.id, m.name, m.photo, tp.name, pp.id)
+         )p
+      ORDER BY p.id DESC;
     `,
     [memberId],
   );

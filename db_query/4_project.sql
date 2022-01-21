@@ -52,7 +52,7 @@ Swift 언어 사용 등)
 -개발 포지션( ex. 프론트, 백 등)
 
 : 프론트 개발자 모집합니다.', '2022-01-19 15:04:47.050533', '2022-01-19 15:04:47.050533', true, false);
-INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (2, 13, 'SeeMeet', 'SeeMeet, 약속부터 만남까지 더 가까운 우리 사이', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/2%20SeeMeet.png?alt=media&token=04e363c5-387d-4db5-9893-33e771abe2d1', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
+INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (8, 22, 'Spark', '친구와 함께하는 66일간의 습관 형성 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/8%20Spark.png?alt=media&token=704a09b6-d12a-49a1-a242-f539fdc965cf', '2022-01-21', '2022-02-20', '경기/인천', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
 이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
@@ -77,33 +77,7 @@ Swift 언어 사용 등)
 
 -개발 포지션( ex. 프론트, 백 등)
 
-: 프론트 개발자 모집합니다.', '2022-01-19 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
-INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (3, 23, 'FILL-IN', '필름카메라 현상소, 필름정보 제공 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/3%20FILL-IN.png?alt=media&token=41aa5d1e-7eb3-4f4b-8a23-757e344995b2', '2022-01-21', '2022-02-20', '경기/인천', '-서비스 아이디어 및  팀 소개
-
-: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
-이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
-현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
-서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
-
--디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
-: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
-접해보신 분이시면 좋을 것 같습니다.
-
--개발 스택( ex. 웹 :
-Typescript, React.js 사용/서버:
-자바, 스프링 프레임워크/ 안드로이드:
-Java 또는 Kotlin 사용/ IOS:
-Swift 언어 사용 등)
-
-:
- 서버: 자바
- 안드로이드: Kotlin
- IOS: Swift 언어 사용할 예정입니다.
-
-
--개발 포지션( ex. 프론트, 백 등)
-
-: 프론트 개발자 모집합니다.', '2022-01-19 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
+: 프론트 개발자 모집합니다.', '2022-01-21 14:44:10.331209', '2022-01-19 14:44:10.331209', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (1, 30, '너가소개서', '나와 함께한 당신이 대신 써주는, 내 자기소개서', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/1%20%EB%84%88%EA%B0%80%EC%86%8C%EA%B0%9C%EC%84%9C.png?alt=media&token=5b0f55ff-ae66-45fc-8332-dddb6c11c4de', '2022-01-21', '2022-02-20', '서울 전체', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
@@ -129,33 +103,7 @@ Swift 언어 사용 등)
 
 -개발 포지션( ex. 프론트, 백 등)
 
-: 프론트 개발자 모집합니다.', '2022-01-19 14:31:27.892288', '2022-01-19 14:31:27.892288', false, false);
-INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (4, 26, '그로투', 'IT교육 강의 비교 플랫폼 서비스', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/4%20%EA%B7%B8%EB%A1%9C%ED%88%AC.png?alt=media&token=16e72fed-4cf2-4a75-a294-99a6a1dd3927', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
-
-: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
-이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
-현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
-서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
-
--디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
-: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
-접해보신 분이시면 좋을 것 같습니다.
-
--개발 스택( ex. 웹 :
-Typescript, React.js 사용/서버:
-자바, 스프링 프레임워크/ 안드로이드:
-Java 또는 Kotlin 사용/ IOS:
-Swift 언어 사용 등)
-
-:
- 서버: 자바
- 안드로이드: Kotlin
- IOS: Swift 언어 사용할 예정입니다.
-
-
--개발 포지션( ex. 프론트, 백 등)
-
-: 프론트 개발자 모집합니다.', '2022-01-19 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
+: 프론트 개발자 모집합니다.', '2022-01-21 14:31:27.892288', '2022-01-19 14:31:27.892288', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (5, 24, '소복소복', '소중한 사람과 함께하는 복약 체크 서비스', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/5%20%EC%86%8C%EB%B3%B5%EC%86%8C%EB%B3%B5.png?alt=media&token=c9186c91-a2b1-418f-9f35-0e8b68ec73cc', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
@@ -181,7 +129,33 @@ Swift 언어 사용 등)
 
 -개발 포지션( ex. 프론트, 백 등)
 
-: 프론트 개발자 모집합니다.', '2022-01-19 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
+: 프론트 개발자 모집합니다.', '2022-01-21 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
+INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (4, 26, '그로투', 'IT교육 강의 비교 플랫폼 서비스', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/4%20%EA%B7%B8%EB%A1%9C%ED%88%AC.png?alt=media&token=16e72fed-4cf2-4a75-a294-99a6a1dd3927', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
+
+: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
+이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
+현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
+서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
+
+-디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
+: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
+접해보신 분이시면 좋을 것 같습니다.
+
+-개발 스택( ex. 웹 :
+Typescript, React.js 사용/서버:
+자바, 스프링 프레임워크/ 안드로이드:
+Java 또는 Kotlin 사용/ IOS:
+Swift 언어 사용 등)
+
+:
+ 서버: 자바
+ 안드로이드: Kotlin
+ IOS: Swift 언어 사용할 예정입니다.
+
+
+-개발 포지션( ex. 프론트, 백 등)
+
+: 프론트 개발자 모집합니다.', '2022-01-21 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (6, 18, 'HAVIT', '콘텐츠를 저장하는 가장 쉬운 방법, Want it? Ssve it, Have it!', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/6%20HAVIT.png?alt=media&token=7da154c0-89b9-4cb1-8aa1-a6c3406a9797', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
@@ -207,7 +181,85 @@ Swift 언어 사용 등)
 
 -개발 포지션( ex. 프론트, 백 등)
 
-: 프론트 개발자 모집합니다.', '2022-01-19 14:41:04.339608', '2022-01-19 14:41:04.339608', false, false);
+: 프론트 개발자 모집합니다.', '2022-01-21 14:41:04.339608', '2022-01-19 14:41:04.339608', false, false);
+INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (12, 12, '비마이플랜', '내 취향애 맞는 기여행자의 여행 일정 컨텐츠 구매 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/12%20%EB%B9%84%EB%A7%88%EC%9D%B4%ED%94%8C%EB%9E%9C.png?alt=media&token=f511641f-9faa-4e5f-92ee-e85600d5c03b', '2022-01-21', '2022-02-20', '서울', '-서비스 아이디어 및  팀 소개
+
+: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
+이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
+현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
+서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
+
+-디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
+: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
+접해보신 분이시면 좋을 것 같습니다.
+
+-개발 스택( ex. 웹 :
+Typescript, React.js 사용/서버:
+자바, 스프링 프레임워크/ 안드로이드:
+Java 또는 Kotlin 사용/ IOS:
+Swift 언어 사용 등)
+
+:
+ 서버: 자바
+ 안드로이드: Kotlin
+ IOS: Swift 언어 사용할 예정입니다.
+
+
+-개발 포지션( ex. 프론트, 백 등)
+
+: 프론트 개발자 모집합니다.', '2022-01-21 14:44:10.331209', '2022-01-19 14:44:10.331209', false, false);
+INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (3, 23, 'FILL-IN', '필름카메라 현상소, 필름정보 제공 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/3%20FILL-IN.png?alt=media&token=41aa5d1e-7eb3-4f4b-8a23-757e344995b2', '2022-01-21', '2022-02-20', '경기/인천', '-서비스 아이디어 및  팀 소개
+
+: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
+이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
+현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
+서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
+
+-디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
+: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
+접해보신 분이시면 좋을 것 같습니다.
+
+-개발 스택( ex. 웹 :
+Typescript, React.js 사용/서버:
+자바, 스프링 프레임워크/ 안드로이드:
+Java 또는 Kotlin 사용/ IOS:
+Swift 언어 사용 등)
+
+:
+ 서버: 자바
+ 안드로이드: Kotlin
+ IOS: Swift 언어 사용할 예정입니다.
+
+
+-개발 포지션( ex. 프론트, 백 등)
+
+: 프론트 개발자 모집합니다.', '2022-01-21 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
+INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (2, 13, 'SeeMeet', 'SeeMeet, 약속부터 만남까지 더 가까운 우리 사이', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/2%20SeeMeet.png?alt=media&token=04e363c5-387d-4db5-9893-33e771abe2d1', '2022-01-21', '2022-02-20', '서울 전체 ', '-서비스 아이디어 및  팀 소개
+
+: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
+이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
+현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
+서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
+
+-디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
+: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
+접해보신 분이시면 좋을 것 같습니다.
+
+-개발 스택( ex. 웹 :
+Typescript, React.js 사용/서버:
+자바, 스프링 프레임워크/ 안드로이드:
+Java 또는 Kotlin 사용/ IOS:
+Swift 언어 사용 등)
+
+:
+ 서버: 자바
+ 안드로이드: Kotlin
+ IOS: Swift 언어 사용할 예정입니다.
+
+
+-개발 포지션( ex. 프론트, 백 등)
+
+: 프론트 개발자 모집합니다.', '2022-01-21 14:36:34.020036', '2022-01-19 14:36:34.020036', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (7, 28, '북스테어즈', '보다 똑똑한 독서를 도와드려요!', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/7%20%EB%B6%81%EC%8A%A4%ED%85%8C%EC%96%B4%EC%A6%88.png?alt=media&token=76a7e54f-930f-4d84-b2ba-ac1e2a829b7f', '2022-01-21', '2022-02-20', '서울', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
@@ -234,32 +286,6 @@ Swift 언어 사용 등)
 -개발 포지션( ex. 프론트, 백 등)
 
 : 프론트 개발자 모집합니다.', '2022-01-19 14:41:04.339608', '2022-01-19 14:41:04.339608', false, false);
-INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (8, 22, 'Spark', '친구와 함께하는 66일간의 습관 형성 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/8%20Spark.png?alt=media&token=704a09b6-d12a-49a1-a242-f539fdc965cf', '2022-01-21', '2022-02-20', '경기/인천', '-서비스 아이디어 및  팀 소개
-
-: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
-이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
-현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
-서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
-
--디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
-: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
-접해보신 분이시면 좋을 것 같습니다.
-
--개발 스택( ex. 웹 :
-Typescript, React.js 사용/서버:
-자바, 스프링 프레임워크/ 안드로이드:
-Java 또는 Kotlin 사용/ IOS:
-Swift 언어 사용 등)
-
-:
- 서버: 자바
- 안드로이드: Kotlin
- IOS: Swift 언어 사용할 예정입니다.
-
-
--개발 포지션( ex. 프론트, 백 등)
-
-: 프론트 개발자 모집합니다.', '2022-01-19 14:44:10.331209', '2022-01-19 14:44:10.331209', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (9, 27, '소담', '우리의 설레는 소품샵 여정', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/9%20%EC%86%8C%EB%8B%B4.png?alt=media&token=efd08c43-a173-42c5-a57e-5ec15464d77e', '2022-01-21', '2022-02-20', '경기/인천', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
@@ -313,32 +339,6 @@ Swift 언어 사용 등)
 
 : 프론트 개발자 모집합니다.', '2022-01-19 14:44:10.331209', '2022-01-19 14:44:10.331209', false, false);
 INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (11, 16, '카드나', '내가 아는 나와 타인이 말하는 나를 통해 자신을 더 넓게 이해하고,자신의 다양한 모습을 표', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/11%20%EC%B9%B4%EB%93%9C%EB%82%98.png?alt=media&token=57142b8b-f10b-42ed-9ef8-bca50c75581f', '2022-01-21', '2022-02-20', '경기', '-서비스 아이디어 및  팀 소개
-
-: 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
-이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
-현재 저희 팀은 완벽하지 않아도 함께 즐거울 수 있는 유쾌하고 멋진 팀원들로 구성되어 있습니다.
-서로 다른 우리가 모여 만드는 시너지와 가능성을 최우선 가치로 두고 있습니다.
-
--디자이너 사용 툴( ex. Figma, Sketch, Protopie, Xd, Photoshop, Illustrator, After Effects, C4D,Zeplin 등)
-: Figma를 주요 협업툴로 사용할 예정입니다. 이외에도 Photoshop,Illustrator와 Photoshop을 기본적으로
-접해보신 분이시면 좋을 것 같습니다.
-
--개발 스택( ex. 웹 :
-Typescript, React.js 사용/서버:
-자바, 스프링 프레임워크/ 안드로이드:
-Java 또는 Kotlin 사용/ IOS:
-Swift 언어 사용 등)
-
-:
- 서버: 자바
- 안드로이드: Kotlin
- IOS: Swift 언어 사용할 예정입니다.
-
-
--개발 포지션( ex. 프론트, 백 등)
-
-: 프론트 개발자 모집합니다.', '2022-01-19 14:44:10.331209', '2022-01-19 14:44:10.331209', false, false);
-INSERT INTO public.project (id, user_id, title, intro, photo, start_date, end_date, area, description, created_at, updated_at, is_closed, is_deleted) VALUES (12, 12, '비마이플랜', '내 취향애 맞는 기여행자의 여행 일정 컨텐츠 구매 서비스 ', 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/12%20%EB%B9%84%EB%A7%88%EC%9D%B4%ED%94%8C%EB%9E%9C.png?alt=media&token=f511641f-9faa-4e5f-92ee-e85600d5c03b', '2022-01-21', '2022-02-20', '서울', '-서비스 아이디어 및  팀 소개
 
 : 단순히 콘텐츠의 내용과 당시의 감정을 기록하는 것뿐 아니라
 이 달의 미디어 소비를 돌아볼 수 있는 수단이 필요하다는 발상에서 시작되었습니다.
@@ -727,6 +727,6 @@ Swift 언어 사용 등)
 
 -개발 포지션( ex. 프론트, 백 등)
 
-: 프론트 개발자 모집합니다.', '2022-01-19 15:04:47.050533', '2022-01-19 15:04:47.050533', false, false);
+: 프론트 개발자 모집합니다.', '2022-01-19 15:04:47.050533', '2022-01-21 08:11:56.441259', false, false);
 
 ALTER SEQUENCE project_project_id_seq RESTART WITH 29;

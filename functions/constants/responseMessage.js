@@ -11,7 +11,7 @@ module.exports = {
 
   // 회원가입
   CREATE_USER: '회원 가입에 성공하였습니다',
-  BLANK_BOX: '올바르지 않습니다. 다시 입력해주세요.',
+  BLANK_BOX: '정보가 올바르지 않습니다. 다시 입력해주세요.',
   ALREADY_EMAIL: '이미 존재하는 이메일입니다.',
 
   // 로그인

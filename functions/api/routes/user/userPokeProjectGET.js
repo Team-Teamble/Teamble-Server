@@ -19,10 +19,10 @@ module.exports = async (req, res) => {
 
     // 1-1. userId로 user가 진행중인 projectId 불러오기
     const projectId = await projectDB.getProjectIdByUserId(client, userId);
-    if (!projectId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
 
     // 1-2. 유저의 is_checked = true로 변경
     let user = await userDB.updatePokedUser(client, userId);
+    if (!user) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
 
     const memberId = await projectPokeDB.getPokingUserByProjectId(client, projectId);
 

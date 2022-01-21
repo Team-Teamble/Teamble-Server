@@ -38,8 +38,6 @@ module.exports = async (req, res) => {
     // 유저 객체에 필요한 데이터 모두 병합
     user = _.merge(user, { projectId, type, tag, position, field });
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.UPDATE_USER_PROFILE_SUCCESS, { user }));
-
     // 4. 유저 포지션 업데이트
     // 기존의 유저 포지션 id 배열 가져오가
     const existingPositionId = await positionDB.getPositionIdByUserId(client, userId);
@@ -61,6 +59,8 @@ module.exports = async (req, res) => {
 
     // 유저 필드 id 업데이트 하기
     userFieldDB.updateUserField(client, userId, insertingFieldId, deletingFieldId);
+
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.UPDATE_USER_PROFILE_SUCCESS, { user }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);

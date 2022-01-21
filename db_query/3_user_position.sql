@@ -1,4 +1,4 @@
-ALTER SEQUENCE user_field_user_field_id_seq RESTART WITH 1;
+ALTER SEQUENCE user_position_user_position_id_seq RESTART WITH 1;
 
 INSERT INTO public.user_position (id, user_id, position_id) VALUES (1, 1, 2);
 INSERT INTO public.user_position (id, user_id, position_id) VALUES (2, 2, 2);
@@ -51,4 +51,4 @@ INSERT INTO public.user_position (id, user_id, position_id) VALUES (48, 30, 4);
 INSERT INTO public.user_position (id, user_id, position_id) VALUES (49, 31, 2);
 INSERT INTO public.user_position (id, user_id, position_id) VALUES (50, 32, 2);
 
-ALTER SEQUENCE user_field_user_field_id_seq RESTART WITH 51;
+ALTER SEQUENCE user_position_user_position_id_seq RESTART WITH 51;

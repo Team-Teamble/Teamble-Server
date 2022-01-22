@@ -363,6 +363,7 @@ const getMemberByMemberId = async (client, memberId) => {
     `,
     [memberId],
   );
+  rows = _.uniqBy(rows, 'id');
   return convertSnakeToCamel.keysToCamel(rows);
 };
 

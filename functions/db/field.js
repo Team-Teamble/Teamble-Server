@@ -47,7 +47,7 @@ const getField = async (client) => {
     `,
   );
   /**
-  분야 정보가 존재하는 경우 기간 객체 저장
+  분야 정보가 존재하는 경우 분야 객체의 배열 저장
   분야 정보가 존재하지 않는 경우 [] 저장
   */
   const field = rows ? rows : [];
@@ -65,7 +65,7 @@ const getFieldWithoutAll = async (client) => {
     `,
   );
   /**
-  분야 정보가 존재하는 경우 기간 객체 저장
+  분야 정보가 존재하는 경우 분야 객체의 배열 저장
   분야 정보가 존재하지 않는 경우 [] 저장
   */
   const fieldWithoutAll = rows ? rows : [];

@@ -3,9 +3,10 @@ const functions = require('firebase-functions');
 const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
-const { loginInWithEmailAndPassword } = require('firebase/auth');
+const { signInWithEmailAndPassword } = require('firebase/auth');
 const db = require('../../../db/db');
 const { userDB, projectDB, typeDB, tagDB, positionDB, fieldDB } = require('../../../db');
+const slackAPI = require('../../../middlewares/slackAPI');
 
 const { firebaseAuth } = require('../../../config/firebaseClient');
 
@@ -23,7 +24,7 @@ module.exports = async (req, res) => {
     client = await db.connect(req);
 
     // Firebase Authentication을 통해 유저 인증
-    const userFirebase = await loginInWithEmailAndPassword(firebaseAuth, email, password)
+    const userFirebase = await signInWithEmailAndPassword(firebaseAuth, email, password)
       .then((user) => user)
       .catch((e) => {
         console.log(e);
@@ -34,12 +35,9 @@ module.exports = async (req, res) => {
       // 제공된 식별자에 해당하는 기존 사용자 레코드가 없다.
       if (userFirebase.error.code === 'auth/user-not-found') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
-
-        // email 사용자 속성에 제공된 값이 잘못되었다.
-        //   } else if (userFirebase.error.code === "auth/invalid-email") {
-        //     return res
-        //       .status(statusCode.BAD_REQUEST)
-        //       .json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
+        //email 사용자 속성에 제공된 값이 잘못되었다.
+      } else if (userFirebase.error.code === 'auth/invalid-email') {
+        return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
 
         // 해당 식별자의 비밀번호가 맞지 않는다.
       } else if (userFirebase.error.code === 'auth/wrong-password') {
@@ -64,9 +62,6 @@ module.exports = async (req, res) => {
     // 1-2. 프로젝트 id 가져오기
     const projectId = await projectDB.getProjectIdByUserId(client, user.id);
 
-    // 1-3. user 객체에 projectId 를 병합
-    user = _.merge(user, { projectId });
-
     // 2-1. 유저의 타입 id 가져오기 (intger | null)
     const typeId = await userDB.getTypeIdByUserId(client, user.id);
 
@@ -88,18 +83,20 @@ module.exports = async (req, res) => {
     // 4-2. 해당 유저의 필드들 가져오기
     const field = await fieldDB.getFieldByFieldId(client, fieldId);
 
+    user = _.merge(user, { projectId, type, tag, position, field });
+
     res.status(statusCode.OK).send(
       util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, {
         user,
-        type,
-        tag,
-        position,
-        field,
         accesstoken,
       }),
     );
   } catch (error) {
     functions.logger.error(`[EMAIL LOGIN ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] email:${email} ${error}`);
+    console.log(error);
+
+    const slackMessage = `[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl} [CONTENT] email: ${email} ${error}`;
+    slackAPI.sendMessageToSlack(slackMessage, slackAPI.DEV_WEB_HOOK_ERROR_MONITORING);
 
     res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
   } finally {

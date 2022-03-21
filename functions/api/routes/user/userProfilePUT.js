@@ -5,13 +5,13 @@ const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
 const { userDB, projectDB, typeDB, tagDB, userPositionDB, positionDB, fieldDB, userFieldDB } = require('../../../db');
+const slackAPI = require('../../../middlewares/slackAPI');
 
 module.exports = async (req, res) => {
   const { userId } = req.params;
   const { positionId, phone, university, major, area, intro, typeId, fieldId, description } = req.body;
 
-  // userId 확인
-  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
+  if (!userId) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
 
   // 모든 값이 들어왔는지 확인
   if (!positionId || !phone || !university || !major || !area || !intro || !typeId || !fieldId || !description)
@@ -38,8 +38,6 @@ module.exports = async (req, res) => {
     // 유저 객체에 필요한 데이터 모두 병합
     user = _.merge(user, { projectId, type, tag, position, field });
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.UPDATE_USER_PROFILE_SUCCESS, { user }));
-
     // 4. 유저 포지션 업데이트
     // 기존의 유저 포지션 id 배열 가져오가
     const existingPositionId = await positionDB.getPositionIdByUserId(client, userId);
@@ -61,9 +59,16 @@ module.exports = async (req, res) => {
 
     // 유저 필드 id 업데이트 하기
     userFieldDB.updateUserField(client, userId, insertingFieldId, deletingFieldId);
+
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.UPDATE_USER_PROFILE_SUCCESS, { user }));
   } catch (error) {
     functions.logger.error(`[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
     console.log(error);
+
+    const slackMessage = `[ERROR] [${req.method.toUpperCase()}] ${
+      req.originalUrl
+    } [CONTENT] userId: ${userId}, positionId: ${positionId},  phone: ${phone},  university: ${university},  major: ${major},  area: ${area},  intro: ${intro},  typeId: ${typeId},  fieldId: ${fieldId}, description: ${description} / ${error}`;
+    slackAPI.sendMessageToSlack(slackMessage, slackAPI.DEV_WEB_HOOK_ERROR_MONITORING);
 
     res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
   } finally {

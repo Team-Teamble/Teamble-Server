@@ -3,13 +3,54 @@
 <br>
 
 ### 서로 다른 색의 우리가 만나는 공간, 팀블 💜
+<br>
 
-&#35; 우리\_팀블하자!
+[&#35; 우리\_팀블하자!](https://teamble.vercel.app)
 
 <img width="2104" alt="KakaoTalk_20220107_191904466" src="https://user-images.githubusercontent.com/78714820/148947258-37724c60-9cf7-48a5-8e33-829df9073638.png">
 
 > 22.01.02 ~ 22.01.22 - SOPT 29th APPJAM
 
+<br>
+<br>
+
+## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> Main Service
+
+### 1. 협업 성향 테스트
+
+![image](https://user-images.githubusercontent.com/63945197/150314646-abd52fe5-d8ac-4efa-85bc-e21a4fdb93ab.png)
+👉 **협업 성향 테스트를 통해 나의 협업 유형을 알아보고, 태그에 등록하여 나와 잘 맞는 팀원들을 찾아보자**
+<br>
+<br>
+
+### 2. 마이 프로필 설정
+
+![image](https://user-images.githubusercontent.com/63945197/150316420-da41d6f4-4d9e-4a84-a0da-c9d7af41574e.png)
+👉 **협업 성향 태그와 관심 프로젝트 분야, 협업 포지션 설정과 자기소개 글을 통해 나를 표현하자**
+<br>
+<br>
+
+### 3. 프로젝트 팀 만들기
+
+![image](https://user-images.githubusercontent.com/63945197/150316811-7ef7a97b-5ead-4c9d-8bc4-ea4a5f2c083f.png)
+👉 **모집 포지션, 선호 협업 성향 및 프로젝트 분야 태그 등을 선택해 나와 잘 맞는 팀원들을 구해보자**
+<br>
+<br>
+
+### 4. 키워드 태그 필터 검색 (프로젝트 & 팀원)
+
+![image](https://user-images.githubusercontent.com/63945197/150319032-4fcd6c31-f86d-48e9-95a5-6d0133be59b4.png)
+![image](https://user-images.githubusercontent.com/63945197/150319259-aca6225b-bf5d-4374-88bb-304b936795e6.png)
+👉 **키워드 태그 필터 검색을 통해 나와 잘 맞는 프로젝트와 팀원을 찾아보자**
+<br>
+<br>
+
+### 5. 콕 찌르기
+
+![image](https://user-images.githubusercontent.com/63945197/150319366-446f4bba-2602-43b4-b8fa-58dde1ba972d.png)
+👉 **콕 찌르기를 통해 함께 하고 싶은 프로젝트 팀원에게 관심을 표현해 보자**
+
+<br>
 <br>
 <br>
 
@@ -538,32 +579,32 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 
 👉 [명세서 보러가기!](https://freezing-innovation-7f5.notion.site/API-a72262b5c1ee496fafd9b9879658ba7a)
 
-|            기능            |                       URI                       | HTTP<br>메서드 |               설명                |      담당      | 완료 |
-| :------------------------: | :---------------------------------------------: | :------------: | :-------------------------------: | :------------: | :--: |
-|    회원가입/<br>로그인     |                  /auth/signup                   |      POST      |           유저 회원가입           |      규원      |  💜  |
-|                            |                   /auth/login                   |      POST      |            유저 로그인            |      현지      |
-|                            |                   /auth/login                   |      GET       |         유저 자동 로그인          |      현지      |
-|        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      |      규원      |
-|          프로젝트          |                /project/metadata                |      GET       | 프로젝트 생성 - 더미 데이터 받기  |      현지      |  💜  |
-|                            |                    /project                     |      POST      |           프로젝트 생성           |      현지      |
-|                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   |      현지      |
-|                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  |      현지      |
-|                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        |      현지      |
-|                            |               /project/:projectId               |      GET       |       프로젝트 상세뷰 조회        |      현지      |
-|                            |               /project/:projectId               |     DELETE     |        프로젝트 모집 완료         |      현지      |
-|         팀원 찾기          |                /member/metadata                 |      GET       |   팀원 찾기 뷰 더미 데이터 받기   |      규원      |
-|                            |                     /member                     |      POST      |          팀원 찾기 조회           |      규원      |
-| 마이페이지/<br>팀원 상세뷰 |              /user/profile/:userId              |      GET       |       유저 프로필 가져오기        |      규원      |  💜  |
-|                            |             /user/profile/metadata              |      GET       | 유저 프로필 수정 더미 데이터 받기 |      규원      |
-|                            |              /user/profile/:userId              |      GET       |         유저 프로필 수정          |      규원      |
-|                            |         /user/profile/photo<br>/:userId         |      POST      |       유저 프로필 사진 변경       |      규원      |
-| 콕 찌르기/<br>팀 지원하기  |                 /user/poke-user                 |      POST      |             콕찌르기              |      규원      |
-|                            |               /user/poke-project                |      POST      |            팀 지원하기            |      현지      |
-|                            |             /user/poke-user/:userId             |      GET       |         나를 찔러본 사람          |      규원      |
-|                            |           /user/poke-project/:userId            |      GET       |     내 프로젝트에 지원한 사람     |      현지      |
-|                            |    /user/poke-user<br>/:userId/:pokingUserId    |     DELETE     |       나를 찔러본 사람 삭제       |      규원      |
-|                            | /user/poke-project<br>/:projectId/:pokingUserId |     DELETE     |  내 프로젝트에 지원한 사람 삭제   |      현지      |
-|    협업 성향<br>테스트     |                                                 |      POST      |   테스트 결과별로 값 저장(예정)   | 현지 <br> 규원 |
+|            기능            |                       URI                       | HTTP<br>메서드 |               설명                | 담당 | 완료 |
+| :------------------------: | :---------------------------------------------: | :------------: | :-------------------------------: | :--: | :--: |
+|    회원가입/<br>로그인     |                  /auth/signup                   |      POST      |           유저 회원가입           | 규원 |  💜  |
+|                            |                   /auth/login                   |      POST      |            유저 로그인            | 현지 |  💜  |
+|                            |                   /auth/login                   |      GET       |         유저 자동 로그인          | 현지 |  💜  |
+|        랜딩 페이지         |                  /project/top                   |      GET       |     주목할만한 프로젝트 조회      | 규원 |  💜  |
+|          프로젝트          |                /project/metadata                |      GET       | 프로젝트 생성 - 더미 데이터 받기  | 현지 |  💜  |
+|                            |                    /project                     |      POST      |           프로젝트 생성           | 현지 |  💜  |
+|                            |            /project/photo/:projectId            |      POST      |     프로젝트 생성 - 사진 추가     | 현지 |  💜  |
+|                            |                 /project/member                 |      POST      |  프로젝트 생성 - 팀 구성원 추가   | 현지 |  💜  |
+|                            |            /project/search/metadata             |      GET       | 프로젝트 찾기 - 더미 데이터 받기  | 현지 |  💜  |
+|                            |                 /project/search                 |      POST      |       프로젝트 찾기 - 조회        | 현지 |  💜  |
+|                            |               /project/:projectId               |      GET       |       프로젝트 상세뷰 조회        | 현지 |  💜  |
+|                            |               /project/:projectId               |     DELETE     |        프로젝트 모집 완료         | 현지 |  💜  |
+|         팀원 찾기          |                /member/metadata                 |      GET       |   팀원 찾기 뷰 더미 데이터 받기   | 규원 |  💜  |
+|                            |                     /member                     |      POST      |          팀원 찾기 조회           | 규원 |  💜  |
+| 마이페이지/<br>팀원 상세뷰 |              /user/profile/:userId              |      GET       |       유저 프로필 가져오기        | 규원 |  💜  |
+|                            |             /user/profile/metadata              |      GET       | 유저 프로필 수정 더미 데이터 받기 | 규원 |  💜  |
+|                            |              /user/profile/:userId              |      GET       |         유저 프로필 수정          | 규원 |  💜  |
+|                            |         /user/profile/photo<br>/:userId         |      POST      |       유저 프로필 사진 변경       | 규원 |  💜  |
+| 콕 찌르기/<br>팀 지원하기  |                 /user/poke-user                 |      POST      |             콕찌르기              | 규원 |  💜  |
+|                            |               /user/poke-project                |      POST      |            팀 지원하기            | 현지 |  💜  |
+|                            |             /user/poke-user/:userId             |      GET       |         나를 찔러본 사람          | 규원 |  💜  |
+|                            |           /user/poke-project/:userId            |      GET       |     내 프로젝트에 지원한 사람     | 현지 |  💜  |
+|                            |    /user/poke-user<br>/:userId/:pokingUserId    |     DELETE     |       나를 찔러본 사람 삭제       | 규원 |  💜  |
+|                            | /user/poke-project<br>/:projectId/:pokingUserId |     DELETE     |  내 프로젝트에 지원한 사람 삭제   | 현지 |  💜  |
 
 <br>
 
@@ -579,38 +620,88 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |-📋 firebaserc
 |-📋 firebase.json
 |-📋 .gitignore
-|-📁 functions*
-|- 📋 index.js
-|- 📋 package.json
-|- 📋 .gitignore
-|- 📋 .env
-|- 📁 api*
-| |- 📋 index.js
-| |- 📁 routes*
-| |- 📋 index.js
-| |- 📁 auth
-|
-|- 📁 config*
-| |- 📋 dbConfig.js
-| |- 📋 firebaseClient.js
-|
-|- 📁 constants*
-| |- 📋 jwt.js
-| |- 📋 responseMessage.js
-| |- 📋 statusCode.js
-|
-|- 📁 db*
-| |- 📋 db.js
-| |- 📋 index.js
-|
-|- 📁 lib*
-| |- 📋 convertSnakeToCamel.js
-| |- 📋 jwtHandlers.js
-| |- 📋 util.js
-|
-|- 📁 middlewares*
-|- 📋 auth.js
-|- 📋 uploadImage.js
+|-📁 db_query
+|-📁 functions_
+               |- 📋 index.js
+               |- 📋 package.json
+               |- 📋 .gitignore
+               |- 📋 .env
+               |- 📁 api_
+               |         |- 📋 index.js
+               |         |- 📁 routes_
+               |                      |- 📋 index.js
+               |                      |- 📁 auth
+               |                      |- 📁 member
+               |                      |- 📁 project
+               |                      |- 📁 user
+               |
+               |- 📁 config_
+               |            |- 📋 dbConfig.js
+               |            |- 📋 firebaseClient.js
+               |
+               |- 📁 constants_
+               |               |- 📋 jwt.js
+               |               |- 📋 responseMessage.js
+               |               |- 📋 statusCode.js
+               |
+               |- 📁 db_
+               |        |- 📋 db.js
+               |        |- 📋 index.js
+               |
+               |- 📁 lib_
+               |         |- 📋 convertSnakeToCamel.js
+               |         |- 📋 jwtHandlers.js
+               |         |- 📋 util.js
+               |
+               |- 📁 middlewares_
+                                 |- 📋 auth.js
+                                 |- 📋 uploadImage.js
 ```
 
 <br>
+
+## <img src="https://user-images.githubusercontent.com/78714820/148998323-df8997b1-ec90-433a-bc2f-340adcd31984.png" width="25"> Dependencies Module
+
+```jsx
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "cross-env NODE_ENV=development firebase emulators:start --only functions --project dev",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "cross-env NODE_ENV=production firebase deploy --only functions --project prod",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "busboy": "^0.3.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.10.7",
+    "dotenv": "^11.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "express": "^4.17.2",
+    "firebase": "^9.6.2",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1",
+    "helmet": "^5.0.1",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+```

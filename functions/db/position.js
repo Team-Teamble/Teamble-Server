@@ -26,7 +26,7 @@ const getPositionByPositionId = async (client, positionId) => {
   const { rows } = await client.query(
     `
     SELECT *
-    FROM "position" p
+    FROM "position" p 
     WHERE p.id = ANY($1)
     ORDER BY id ASC;
     `,
@@ -48,7 +48,7 @@ const getPosition = async (client) => {
   );
 
   /**
-  포지션 정보가 존재하는 경우 기간 객체 저장
+  포지션 정보가 존재하는 경우 포지션 객체의 배열 저장
   포지션 정보가 존재하지 않는 경우 [] 저장
   */
   const position = rows ? rows : [];
@@ -68,7 +68,7 @@ const getPositionWithoutAll = async (client) => {
   );
 
   /**
-  포지션 정보가 존재하는 경우 기간 객체 저장
+  포지션 정보가 존재하는 경우 포지션 객체의 배열 저장
   포지션 정보가 존재하지 않는 경우 [] 저장
   */
   const positionWithoutAll = rows ? rows : [];

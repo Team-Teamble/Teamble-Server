@@ -6,6 +6,7 @@ const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
 const { userDB, projectDB } = require('../../../db');
+const slackAPI = require('../../../middlewares/slackAPI');
 
 const jwtHandlers = require('../../../lib/jwtHandlers');
 
@@ -35,6 +36,8 @@ module.exports = async (req, res) => {
     if (userFirebase.err) {
       if (userFirebase.error.code === 'auth/email-already-exists') {
         return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
+      } else if (userFirebase.error.code === 'auth/invalid-email') {
+        return res.status(statusCode.BAD_REQUEST).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
       } else if (userFirebase.error.code === 'auth/invalid-password') {
         return res.status(statusCode.NOT_FOUND).json(util.fail(statusCode.BAD_REQUEST, responseMessage.BLANK_BOX));
       } else {
@@ -64,8 +67,11 @@ module.exports = async (req, res) => {
       }),
     );
   } catch (error) {
-    console.log(error);
     functions.logger.error(`[EMAIL SIGNUP ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] email:${email} ${error}`);
+    console.log(error);
+
+    const slackMessage = `[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl} [CONTENT] email: ${email} ${error}`;
+    slackAPI.sendMessageToSlack(slackMessage, slackAPI.DEV_WEB_HOOK_ERROR_MONITORING);
 
     res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
   } finally {

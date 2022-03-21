@@ -98,29 +98,32 @@ alter table type
 
 alter sequence type_type_id_seq owned by type.id;
 
+create unique index type_type_id_uindex
+    on type (id);
+
 create table "user"
 (
-    id          integer   default nextval('user_user_id_seq'::regclass)                                                                                                                                                    not null
+    id          integer     default nextval('user_user_id_seq'::regclass)                                                                                                                                                    not null
         constraint user_pk
             primary key,
-    id_firebase varchar(50)                                                                                                                                                                                                not null,
-    name        varchar(20)                                                                                                                                                                                                not null,
-    email       varchar(50)                                                                                                                                                                                                not null,
-    phone       varchar(20),
-    photo       text      default 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/%ED%91%B8%ED%91%B8%EC%97%B0%EC%9D%B4%ED%91%B8.jpeg?alt=media&token=8f53a68f-d228-4a7d-ac9c-f238d10ea6e0'::text not null,
+    id_firebase varchar(50) default ''::character varying                                                                                                                                                                    not null,
+    name        varchar(20) default ''::character varying                                                                                                                                                                    not null,
+    email       varchar(50) default ''::character varying                                                                                                                                                                    not null,
+    phone       varchar(20) default ''::character varying,
+    photo       text        default 'https://firebasestorage.googleapis.com/v0/b/teamble-server.appspot.com/o/%ED%91%B8%ED%91%B8%EC%97%B0%EC%9D%B4%ED%91%B8.jpeg?alt=media&token=8f53a68f-d228-4a7d-ac9c-f238d10ea6e0'::text not null,
     type_id     integer
         constraint user_type_type_id_fk
             references type
             on update cascade on delete cascade,
-    university  varchar(20),
-    major       varchar(50),
-    area        varchar(20),
-    intro       varchar(50),
-    description text,
-    is_checked  boolean   default true                                                                                                                                                                                     not null,
-    created_at  timestamp default now()                                                                                                                                                                                    not null,
-    updated_at  timestamp default now()                                                                                                                                                                                    not null,
-    is_deleted  boolean   default false                                                                                                                                                                                    not null
+    university  varchar(20) default ''::character varying,
+    major       varchar(50) default ''::character varying,
+    area        varchar(20) default ''::character varying,
+    intro       varchar(50) default ''::character varying,
+    description text        default ''::text,
+    is_checked  boolean     default true                                                                                                                                                                                     not null,
+    created_at  timestamp   default now()                                                                                                                                                                                    not null,
+    updated_at  timestamp   default now()                                                                                                                                                                                    not null,
+    is_deleted  boolean     default false                                                                                                                                                                                    not null
 );
 
 comment on table "user" is '팀블 유저';
@@ -135,9 +138,6 @@ create unique index user_id_firebase_uindex
 
 create unique index user_user_id_uindex
     on "user" (id);
-
-create unique index type_type_id_uindex
-    on type (id);
 
 create table project
 (
@@ -456,6 +456,9 @@ comment on table tag is '협업 성향 태그';
 alter table tag
     owner to postgres;
 
+create unique index tag_id_uindex
+    on tag (id);
+
 create table project_tag
 (
     id         integer default nextval('project_type_project_type_id_seq'::regclass) not null
@@ -480,9 +483,6 @@ alter sequence project_type_project_type_id_seq owned by project_tag.id;
 
 create unique index project_type_project_type_id_uindex
     on project_tag (id);
-
-create unique index tag_id_uindex
-    on tag (id);
 
 create table type_tag
 (

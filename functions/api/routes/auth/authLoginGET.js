@@ -6,6 +6,7 @@ const responseMessage = require('../../../constants/responseMessage');
 const db = require('../../../db/db');
 const { userDB, projectDB, typeDB, tagDB, positionDB, fieldDB } = require('../../../db');
 const { TOKEN_INVALID, TOKEN_EXPIRED } = require('../../../constants/jwt');
+const slackAPI = require('../../../middlewares/slackAPI');
 
 const jwtHandlers = require('../../../lib/jwtHandlers');
 
@@ -42,9 +43,6 @@ module.exports = async (req, res) => {
     // 1-2. 프로젝트 id 가져오기
     const projectId = await projectDB.getProjectIdByUserId(client, user.id);
 
-    // 1-3. user 객체에 projectId 를 병합
-    user = _.merge(user, { projectId });
-
     // 2-1. 유저의 타입 id 가져오기 (intger | null)
     const typeId = await userDB.getTypeIdByUserId(client, user.id);
 
@@ -66,18 +64,19 @@ module.exports = async (req, res) => {
     // 4-2. 해당 유저의 필드들 가져오기
     const field = await fieldDB.getFieldByFieldId(client, fieldId);
 
+    user = _.merge(user, { projectId, type, tag, position, field });
+
     res.status(statusCode.OK).send(
       util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, {
         user,
-        type,
-        tag,
-        position,
-        field,
-        accesstoken,
       }),
     );
   } catch (error) {
     functions.logger.error(`[LOGIN ERROR] [${req.method.toUpperCase()}] ${req.originalUrl}`, `[CONTENT] ${error}`);
+    console.log(error);
+
+    const slackMessage = `[ERROR] [${req.method.toUpperCase()}] ${req.originalUrl} [CONTENT] ${error}`;
+    slackAPI.sendMessageToSlack(slackMessage, slackAPI.DEV_WEB_HOOK_ERROR_MONITORING);
 
     res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.INTERNAL_SERVER_ERROR));
   } finally {

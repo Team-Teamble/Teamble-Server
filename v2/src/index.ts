@@ -1,16 +1,11 @@
-import express, { Request, Response, NextFunction } from 'express';
+import { createApp } from './app';
 
-const app = express();
+async function main() {
+  const app = await createApp({
+    baseURL: 'http://localhost:5005',
+    port: 5005,
+  });
+  app.start();
+}
 
-app.get('/welcome', (req: Request, res: Response, next: NextFunction) => {
-  res.send('welcome!!');
-});
-
-app.listen('5005', () => {
-  console.log(`
-  #######################################
-  💜     teamble server - version2    💜
-  💜  Server listening on port: 5005  💜
-  #######################################
-`);
-});
+main();

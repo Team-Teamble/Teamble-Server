@@ -52,7 +52,51 @@ export class LocalStorageRepository implements Repository {
     }
   }
 
+  async createProject(project: Pick<Project, 'title' | 'intro'>): Promise<Project> {
+    const projects = await this.getProjects();
+    const newProject = {
+      ...project,
+      id: nanoid(),
+      user_id: 'LpGg9qrNEeAzf0I2s0DQP',
+      photo: 'www..',
+      start_date: new Date(),
+      end_date: new Date(),
+      area: '서울',
+      description: '모여라모여',
+      created_at: new Date(),
+      updated_at: new Date(),
+      is_closed: false,
+      is_deleted: false,
+    };
+    projects.push(newProject);
+    await this.saveProjects(projects);
+    return newProject;
+  }
+
+  async getProject(projectId: string): Promise<Project | null> {
+    const projects = await this.getProjects();
+    const foundProject = projects.find((project) => project.id === projectId);
+
+    if (foundProject) {
+      return foundProject;
+    } else {
+      return null;
+    }
+  }
+
+  async getProjects(): Promise<Project[]> {
+    const raw = this.localStorage.getItem('projects');
+    if (!raw) {
+      return [];
+    }
+    return JSON.parse(raw) as Project[];
+  }
+
   private async saveUsers(users: User[]) {
     this.localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  private async saveProjects(projects: Project[]) {
+    this.localStorage.setItem('projects', JSON.stringify(projects));
   }
 }

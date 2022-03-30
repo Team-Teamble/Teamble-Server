@@ -16,4 +16,4 @@ const util = {
   },
 };
 
-module.exports = util;
+export = util;

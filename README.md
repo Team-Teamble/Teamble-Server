@@ -3,6 +3,7 @@
 <br>
 
 ### 서로 다른 색의 우리가 만나는 공간, 팀블 💜
+
 <br>
 
 [&#35; 우리\_팀블하자!](https://teamble.vercel.app)
@@ -620,42 +621,42 @@ main은 모든 작업이 끝난 후 develop에서 Merge 시킨다.
 |-📋 firebaserc
 |-📋 firebase.json
 |-📋 .gitignore
-|-📁 db_query
-|-📁 functions_
-               |- 📋 index.js
-               |- 📋 package.json
-               |- 📋 .gitignore
-               |- 📋 .env
-               |- 📁 api_
-               |         |- 📋 index.js
-               |         |- 📁 routes_
-               |                      |- 📋 index.js
-               |                      |- 📁 auth
-               |                      |- 📁 member
-               |                      |- 📁 project
-               |                      |- 📁 user
-               |
-               |- 📁 config_
-               |            |- 📋 dbConfig.js
-               |            |- 📋 firebaseClient.js
-               |
-               |- 📁 constants_
-               |               |- 📋 jwt.js
-               |               |- 📋 responseMessage.js
-               |               |- 📋 statusCode.js
-               |
-               |- 📁 db_
-               |        |- 📋 db.js
-               |        |- 📋 index.js
-               |
-               |- 📁 lib_
-               |         |- 📋 convertSnakeToCamel.js
-               |         |- 📋 jwtHandlers.js
-               |         |- 📋 util.js
-               |
-               |- 📁 middlewares_
-                                 |- 📋 auth.js
-                                 |- 📋 uploadImage.js
+|-📁 db*query
+|-📁 functions*
+|- 📋 index.js
+|- 📋 package.json
+|- 📋 .gitignore
+|- 📋 .env
+|- 📁 api*
+| |- 📋 index.js
+| |- 📁 routes*
+| |- 📋 index.js
+| |- 📁 auth
+| |- 📁 member
+| |- 📁 project
+| |- 📁 user
+|
+|- 📁 config*
+| |- 📋 dbConfig.js
+| |- 📋 firebaseClient.js
+|
+|- 📁 constants*
+| |- 📋 jwt.js
+| |- 📋 responseMessage.js
+| |- 📋 statusCode.js
+|
+|- 📁 db*
+| |- 📋 db.js
+| |- 📋 index.js
+|
+|- 📁 lib*
+| |- 📋 convertSnakeToCamel.js
+| |- 📋 jwtHandlers.js
+| |- 📋 util.js
+|
+|- 📁 middlewares\_
+|- 📋 auth.js
+|- 📋 uploadImage.js
 ```
 
 <br>

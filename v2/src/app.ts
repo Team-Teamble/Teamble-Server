@@ -1,8 +1,9 @@
 import express, { ErrorRequestHandler } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { getAPIEndpoints } from './endpoint';
+import { getAPIEndpoints, getAPIEndpoints2 } from './endpoint';
 import { LocalStorageRepository } from './repository/localStorageRepository';
+import { MysqlRepository } from './repository/mysqlRepository';
 import printer from './lib/printer';
 
 interface ServerError {
@@ -16,14 +17,15 @@ interface AppConfig {
 
 export async function createApp(config: AppConfig) {
   const app = express();
-  const db = new LocalStorageRepository('data/db');
+  // const db = new LocalStorageRepository('data/db');
+  const db = new MysqlRepository();
 
   app.use(morgan('dev'));
   app.use(cors());
 
   app.use(express.json());
 
-  const apiRouter = await getAPIEndpoints(db, config);
+  const apiRouter = await getAPIEndpoints2(db, config);
   app.use('/api', apiRouter);
 
   app.use('*', (req, res) => {

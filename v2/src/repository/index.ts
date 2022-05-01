@@ -13,4 +13,5 @@ export interface Repository {
 
 export interface Repository2 {
   createUser(user: Pick<User, 'email' | 'name' | 'phone'>, client: mysql.PoolConnection): Promise<User>;
+  updateUserPhoto(userId: string, location: string, client: mysql.PoolConnection): Promise<User>;
 }

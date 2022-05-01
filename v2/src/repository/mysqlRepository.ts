@@ -16,4 +16,11 @@ export class MysqlRepository implements Repository2 {
 
     return row[0];
   }
+
+  async updateUserPhoto(userId: string, location: string, client: mysql.PoolConnection): Promise<User> {
+    await client.query('UPDATE `user` SET photo=? WHERE id=?;', [location, userId]);
+    const [row]: any = await client.query('SELECT * FROM `user` WHERE id=?;', [userId]);
+
+    return row[0];
+  }
 }

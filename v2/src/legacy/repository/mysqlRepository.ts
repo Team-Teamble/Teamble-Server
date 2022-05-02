@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
 import { nanoid } from 'nanoid';
 import { Repository2 } from '.';
-import { Project } from '../entity/project';
-import { User } from '../entity/user';
+import { User } from '../../interfaces/user/User';
 import mysql from 'mysql2/promise';
 
 dotenv.config();

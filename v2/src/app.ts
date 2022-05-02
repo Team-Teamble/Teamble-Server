@@ -1,10 +1,11 @@
 import express, { ErrorRequestHandler } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { getAPIEndpoints, getAPIEndpoints2 } from './endpoint';
-import { LocalStorageRepository } from './repository/localStorageRepository';
-import { MysqlRepository } from './repository/mysqlRepository';
 import printer from './lib/printer';
+import routes from './routes';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+import path from 'path';
 
 interface ServerError {
   code: string;
@@ -18,15 +19,15 @@ interface AppConfig {
 export async function createApp(config: AppConfig) {
   const app = express();
   // const db = new LocalStorageRepository('data/db');
-  const db = new MysqlRepository();
+  const swaggerSpec = YAML.load(path.join(__dirname, '../build/swagger.yaml'));
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.use(morgan('dev'));
   app.use(cors());
 
   app.use(express.json());
 
-  const apiRouter = await getAPIEndpoints2(db, config);
-  app.use('/api', apiRouter);
+  app.use(routes);
 
   app.use('*', (req, res) => {
     res.status(404).json({ message: '올바르지 않은 경로입니다.' });

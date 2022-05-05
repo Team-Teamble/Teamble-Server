@@ -1,6 +1,6 @@
 import { Response, Router } from 'express';
-import { Project } from '../entity/project';
-import { Repository } from '../repository';
+import { Project } from '../interfaces/Project';
+import { Repository } from '../legacy/repository';
 import { asyncRoute } from '../lib/endpoint';
 import util from '../lib/util';
 import statusCode from '../constants/statusCode';

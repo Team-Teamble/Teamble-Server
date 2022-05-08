@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
-import { Project } from '../entity/project';
-import { User } from '../entity/user';
+import { Project } from '../../interfaces/Project';
+import { User } from '../../interfaces/user/User';
 
 export interface Repository {
   createUser(user: Pick<User, 'email' | 'name' | 'phone'>): Promise<User>;

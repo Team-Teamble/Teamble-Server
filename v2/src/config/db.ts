@@ -1,5 +1,4 @@
-import { Request } from 'express';
-import mysql from 'mysql2/promise';
+import mysql from 'mysql2';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,10 +14,12 @@ const pool = mysql.createPool({
   acquireTimeout: 60 * 1000,
 });
 
-const connect = async (req: Request) => {
-  const client = pool.getConnection();
+function getConnection(callback: any) {
+  pool.getConnection(function (err, conn) {
+    if (!err) {
+      callback(conn);
+    }
+  });
+}
 
-  return client;
-};
-
-export default connect;
+export { getConnection };

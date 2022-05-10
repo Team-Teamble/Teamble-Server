@@ -10,7 +10,7 @@
     "build": "tsc --build --clean && tsc --build",
     "start": "node ./dist/index.js",
     "api-docs": "swagger-cli bundle ./src/swagger/openapi.yaml --outfile build/swagger.yaml --type yaml",
-    "predev": "npm run api-docs"
+    "predev": "yarn run api-docs"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

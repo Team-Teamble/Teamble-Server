@@ -1,50 +1,101 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Teamble API docs
-  description: Teambld API 문서입니다
+  title: Teamble
+  description: Teamble의 api 명세서
 servers:
-  - url: 'http://localhost:3000/'
+  - url: http://localhost:5005/api-docs/
 paths:
-  $ref: './paths/_index.yaml'
+  /auth/signup:
+    post:
+      tags: ['1.1 사용자']
+      summary: 유저 회원가입
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: client
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  format: 20byte
+                  example: 박현지
+              required: [name]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 회원가입에 성공하였습니다
+                  data:
+                    $ref: '#/components/schemas/User'
+
+        '400':
+          description: BAD_REQUEST
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fail'
+              examples:
+                1:
+                  summary: Response Body
+                  value:
+                    status: 400
+                    success: false
+                    message: 필수 항목을 모두 입력해주세요
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
-  parameters: null
   schemas:
     User:
       type: object
-      required:
-        - _id
-        - name
       properties:
-        _id:
-          type: number
-          description: id
+        id:
+          type: string
+          example: 1
         name:
           type: string
-          description: 유저 이름
-    Error:
+          example: 박현지
+    Fail:
       type: object
+      required: [status, success, message]
       properties:
+        status:
+          type: integer
         success:
           type: boolean
         message:
           type: string
   responses:
-    BadRequest:
-      description: 잘못된 요청
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            success: false
-            message: 잘못된 요청
     InternalServerError:
-      description: 서버 에러
+      description: INTERNAL_SERVER_ERROR
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            success: false
-            message: 서버 내부 오류
+            $ref: '#/components/schemas/Fail'
+          examples:
+            1:
+              summary: Response Body
+              value:
+                status: 500
+                success: false
+                message: 서버 내 오류

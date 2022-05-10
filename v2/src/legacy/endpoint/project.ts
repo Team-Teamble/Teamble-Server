@@ -1,10 +1,11 @@
+
 // import { Response, Router } from 'express';
-// import { Project } from '../interfaces/Project';
-// import { Repository } from '../legacy/repository';
-// import { asyncRoute } from '../lib/endpoint';
-// import util from '../lib/util';
-// import statusCode from '../constants/statusCode';
-// import responseMessage from '../constants/responseMessage';
+// import { Project } from '../../interfaces/Project';
+// import { Repository } from '../repository';
+// import { asyncRoute } from '../../lib/endpoint';
+// import util from '../../lib/util';
+// import statusCode from '../../constants/statusCode';
+// import responseMessage from '../../constants/responseMessage';
 
 // function setEndpoint(router: Router, db: Repository) {
 //   router.post(

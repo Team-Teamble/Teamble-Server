@@ -1,64 +1,65 @@
-import { Response, Router } from 'express';
-import { User } from '../../interfaces/user/User';
-import { Repository } from '../repository';
-import { asyncRoute } from '../../lib/endpoint';
-import util from '../../lib/util';
-import statusCode from '../../constants/statusCode';
-import responseMessage from '../../constants/responseMessage';
+// import { Response, Router } from 'express';
+// import { User } from '../../interfaces/user/User';
+// import { Repository } from '../repository';
+// import { asyncRoute } from '../../lib/endpoint';
+// import util from '../../lib/util';
+// import statusCode from '../../constants/statusCode';
+// import responseMessage from '../../constants/responseMessage';
 
-function setEndpoint(router: Router, db: Repository) {
-  router.post(
-    '/user',
-    asyncRoute(async (req, res) => {
-      if (userFormatGuard(req.body, res)) {
-        const newUser = await db.createUser(req.body);
 
-        res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, responseMessage.CREATE_USER, newUser));
-      }
-    }),
-  );
+// function setEndpoint(router: Router, db: Repository) {
+//   router.post(
+//     '/user',
+//     asyncRoute(async (req, res) => {
+//       if (userFormatGuard(req.body, res)) {
+//         const newUser = await db.createUser(req.body);
 
-  router.get(
-    '/user',
-    asyncRoute(async (req, res) => {
-      const users = await db.getUsers();
+//         res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, responseMessage.CREATE_USER, newUser));
+//       }
+//     }),
+//   );
 
-      res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_SEARCH_SUCCESS, users));
-    }),
-  );
+//   router.get(
+//     '/user',
+//     asyncRoute(async (req, res) => {
+//       const users = await db.getUsers();
 
-  router.get(
-    '/user/:userId',
-    asyncRoute(async (req, res) => {
-      const userId = req.params.userId;
-      const user = await db.getUserById(userId);
+//       res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_MEMBER_SEARCH_SUCCESS, users));
+//     }),
+//   );
 
-      if (user === null) {
-        res.status(statusCode.NOT_FOUND).send(util.fail(statusCode.NOT_FOUND, responseMessage.NO_USER));
-        return;
-      }
+//   router.get(
+//     '/user/:userId',
+//     asyncRoute(async (req, res) => {
+//       const userId = req.params.userId;
+//       const user = await db.getUserById(userId);
 
-      res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_USER_PROFILE_SUCCESS, user));
-    }),
-  );
-}
+//       if (user === null) {
+//         res.status(statusCode.NOT_FOUND).send(util.fail(statusCode.NOT_FOUND, responseMessage.NO_USER));
+//         return;
+//       }
 
-function userFormatGuard(obj: unknown, res: Response): obj is Pick<User, 'email' | 'name' | 'phone'> {
-  if (typeof obj !== 'object' || obj === null) {
-    res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
-    return false;
-  }
+//       res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.GET_USER_PROFILE_SUCCESS, user));
+//     }),
+//   );
+// }
 
-  const toCheck: Array<keyof Pick<User, 'email' | 'name' | 'phone'>> = ['email', 'name', 'phone'];
+// function userFormatGuard(obj: unknown, res: Response): obj is Pick<User, 'email' | 'name' | 'phone'> {
+//   if (typeof obj !== 'object' || obj === null) {
+//     res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.OUT_OF_VALUE));
+//     return false;
+//   }
 
-  for (const key of toCheck) {
-    if ((obj as User)[key] === undefined) {
-      res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
-      return false;
-    }
-  }
+//   const toCheck: Array<keyof Pick<User, 'email' | 'name' | 'phone'>> = ['email', 'name', 'phone'];
 
-  return true;
-}
+//   for (const key of toCheck) {
+//     if ((obj as User)[key] === undefined) {
+//       res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+//       return false;
+//     }
+//   }
 
-export default setEndpoint;
+//   return true;
+// }
+
+// export default setEndpoint;

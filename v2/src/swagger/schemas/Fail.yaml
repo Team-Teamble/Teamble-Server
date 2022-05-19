@@ -1,0 +1,9 @@
+type: object
+required: [status, success, message]
+properties:
+  status:
+    type: integer
+  success:
+    type: boolean
+  message:
+    type: string

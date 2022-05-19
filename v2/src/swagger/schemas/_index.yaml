@@ -1,0 +1,6 @@
+User:
+  $ref: './User.yaml'
+Fail:
+  $ref: './Fail.yaml'
+Success:
+  $ref: './Success.yaml'

@@ -1,0 +1,124 @@
+get:
+  tags: ['4. 유저']
+  summary: 유저 프로필 가져오기 (규원)
+  parameters:
+    - name: userId
+      $ref: '../../parameters/userId.yaml'
+    - name: X-Authorization-Token
+      $ref: '../../parameters/xAuthorizationToken.yaml'
+  responses:
+    '200-Success':
+      description: 유저 프로필 가져오기 성공
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 유저 프로필 가져오기에 성공하였습니다
+              data:
+                type: object
+                example:
+                  projectCard:
+                    $ref: '../../examples/projectCard.yaml'
+put:
+  tags: ['4. 유저']
+  summary: 유저 프로필 수정 (규원)
+  parameters:
+    - name: userId
+      $ref: '../../parameters/userId.yaml'
+    - name: X-Authorization-Token
+      $ref: '../../parameters/xAuthorizationToken.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            positionId:
+              description: 선택한 협업 포지션 id
+              type: integer
+              default: 1
+              example: 2
+            tagId:
+              description: 선택한 협업 성향 태그 id (최대 3개)
+              type: array
+              items:
+                type: integer
+              minItems: 1
+              maxItems: 3
+              default: [1]
+              example: [1]
+            fieldId:
+              description: 선택한 관심 프로젝트 id (최대 3개)
+              type: array
+              items:
+                type: integer
+              minItems: 1
+              maxItems: 3
+              default: [1]
+              example: [2, 3, 4]
+            count:
+              description: 한 번(한 페이지)에 받을 팀원 개수
+              type: integer
+              example: 20
+            page:
+              description: 받을 페이지 번호 (1부터 시작)
+              type: integer
+              example: 1
+          required: [positionId, tagId, fieldId, count, page]
+  responses:
+    '200-Success':
+      description: 유저 프로필 수정 성공
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 유저 프로필 수정에 성공하였습니다
+              data:
+                type: object
+                example:
+                  user:
+                    [
+                      {
+                        id: 1,
+                        nickname: 팀블이는팀블팀블해,
+                        photo: https://firebasestorage.googleapis.com/v0/b/wesopt29-21638.appspot.com,
+                        position: [기획자, 디자이너],
+                        type: 빈틈없는 쏙블리,
+                        tag: [체계적인, 계획적인],
+                        field: [스포츠, 여행],
+                      },
+                      {
+                        id: 3,
+                        nickname: ㅎㅎ,
+                        photo: https://firebasestorage.googleapis.com/v0/b/wesopt29-21638.appspot.com,
+                        position: [개발자],
+                        type: 빈틈없는 쏙블리,
+                        tag: [체계적인, 계획적인],
+                        field: [O2O],
+                      },
+                    ]
+    '400-BlankBox':
+      description: 모든 정보를 채우지 않은 경우
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/Fail.yaml'
+          example:
+            status: 400
+            success: false
+            message: 모든 항목을 입력해주세요

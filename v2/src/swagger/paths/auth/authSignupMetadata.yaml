@@ -1,0 +1,24 @@
+get:
+  tags: ['1. 회원가입/로그인']
+  summary: 회원가입 뷰 메타데이터 받기 (규원)
+  responses:
+    '200-Success':
+      description: 회원가입 뷰 메타데이터 받기 성공
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 회원가입 뷰 메타데이터 받기에 성공하였습니다
+              data:
+                type: object
+                example:
+                  field:
+                    $ref: '../../examples/fieldWithoutAll.yaml'

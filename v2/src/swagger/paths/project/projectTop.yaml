@@ -1,0 +1,24 @@
+get:
+  tags: ['2. 프로젝트']
+  summary: 주목할만한 프로젝트 조회 (문규원)
+  responses:
+    '200-Success':
+      description: 주목할만한 프로젝트 조회 성공
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 주목할만한 프로젝트 조회에 성공하였습니다
+              data:
+                type: object
+                example:
+                  projectCard:
+                    $ref: '../../examples/projectCard.yaml'

@@ -1,6 +1,0 @@
-/user:
-  get:
-    summary: Returns user list
-    responses:
-      400:
-        $ref: '../openapi.yaml#/components/responses/BadRequest'

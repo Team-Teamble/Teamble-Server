@@ -1,0 +1,77 @@
+post:
+  tags: ['1. 회원가입/로그인']
+  summary: 유저 회원가입 (규원)
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            id_firebase:
+              description: Firebase가 제공하는 uid
+              type: string
+              format: varchar(50)
+              example: T36hxnaa1a3cSssegagmiyHGFA2
+            email:
+              description: 소셜로그인 이메일
+              type: string
+              format: varchar(50)
+              example: teamble@gmail.com
+            name:
+              description: 소셜로그인 이름
+              type: string
+              format: varchar(20)
+              example: 김팀블
+            photo:
+              description: 소셜로그인 유저 프로필 사진 url
+              type: string
+              format: text
+              example: https://firebasestorage.googleapis.com/v0/b/wesopt29-21638.appspot.com
+            type_id:
+              description: 협업 성향 id
+              type: integer
+              example: 1
+            nickname:
+              description: 팀블 사이트 내 유저 이름
+              type: string
+              format: varchar(20)
+              example: 팀블이는팀블팀블해
+            field:
+              description: 관심있는 프로젝트 분야
+              type: array
+              items:
+                type: integer
+              minItems: 1
+              maxItems: 3
+              example: [2, 5, 10]
+          required: [id_firebase, email, name, photo, nickname, field]
+  responses:
+    '200-Success':
+      description: 회원가입 성공
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: integer
+                example: 200
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: 회원가입에 성공하였습니다
+              data:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    id_firebase: T36hxnaa1a3cSssegagmiyHGFA2
+                    email: teamble@gmail.com
+                    name: 김팀블
+                    nickname: 팀블이는팀블팀블해
+                    photo: https://firebasestorage.googleapis.com/v0/b/wesopt29-21638.appspot.com
+                    type_id: 1
+                    is_checked: true
+                    created_at: 2021-11-37T01:06:14.2472
+                    updated_at: 2021-11-37T01:06:14.2472
+                    is_deleted: false

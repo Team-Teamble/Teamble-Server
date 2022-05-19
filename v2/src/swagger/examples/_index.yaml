@@ -1,0 +1,6 @@
+field:
+  $ref: './field.yaml'
+fieldWithoutAll:
+  $ref: './fieldWithoutAll.yaml'
+projectCard:
+  $ref: './projectCard.yaml'

@@ -1,0 +1,9 @@
+description: 존재하지 않는 회원
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/_index.yaml#/Fail'
+    example:
+      status: 404
+      success: false
+      message: 존재하지 않는 회원입니다

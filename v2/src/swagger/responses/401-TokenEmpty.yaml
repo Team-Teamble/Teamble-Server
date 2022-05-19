@@ -1,0 +1,9 @@
+description: 토큰 없음
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/_index.yaml#/Fail'
+    example:
+      status: 401
+      success: false
+      message: 토큰이 없습니다

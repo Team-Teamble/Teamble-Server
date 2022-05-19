@@ -6,96 +6,22 @@ info:
 servers:
   - url: http://localhost:5005/api-docs/
 paths:
+  /:
+    $ref: './paths/common.yaml'
+  /auth/signup/metadata:
+    $ref: './paths/auth/authSignupMetadata.yaml'
   /auth/signup:
-    post:
-      tags: ['1.1 사용자']
-      summary: 유저 회원가입
-      parameters:
-        - name: q
-          in: query
-          schema:
-            type: string
-        - name: client
-          in: query
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                name:
-                  type: string
-                  format: 20byte
-                  example: 박현지
-              required: [name]
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 회원가입에 성공하였습니다
-                  data:
-                    $ref: '#/components/schemas/User'
-
-        '400':
-          description: BAD_REQUEST
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Fail'
-              examples:
-                1:
-                  summary: Response Body
-                  value:
-                    status: 400
-                    success: false
-                    message: 필수 항목을 모두 입력해주세요
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
+    $ref: './paths/auth/authSignup.yaml'
+  /project/top:
+    $ref: './paths/project/projectTop.yaml'
+  /user/profile/{userId}:
+    $ref: './paths/user/userProfileUserId.yaml'
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 1
-        name:
-          type: string
-          example: 박현지
-    Fail:
-      type: object
-      required: [status, success, message]
-      properties:
-        status:
-          type: integer
-        success:
-          type: boolean
-        message:
-          type: string
+    $ref: './schemas/_index.yaml'
   responses:
-    InternalServerError:
-      description: INTERNAL_SERVER_ERROR
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Fail'
-          examples:
-            1:
-              summary: Response Body
-              value:
-                status: 500
-                success: false
-                message: 서버 내 오류
+    $ref: './responses/_index.yaml'
+  # parameters:
+  #   $ref: './parameters/_index.yaml'
+  # examples:
+  #   $ref: './examples/_index.yaml'

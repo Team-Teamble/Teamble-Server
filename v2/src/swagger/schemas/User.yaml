@@ -1,0 +1,118 @@
+type: object
+properties:
+  id:
+    description: 유저 id
+    type: integer
+    example: 1
+  id_firebase:
+    description: Firebase uid
+    type: string
+    format: varchar(50)
+    example: T36hxnaa1a3cSssegagmiyHGFA2
+  email:
+    description: 소셜로그인 이메일
+    type: string
+    format: varchar(50)
+    example: teamble@gmail.com
+  name:
+    description: 소셜로그인 이름
+    type: string
+    format: varchar(20)
+    example: 김팀블
+  nickname:
+    description: 닉네임
+    type: string
+    format: varchar(20)
+    example: 팀블이는팀블팀블해
+  photo:
+    description: 프로필 사진 url
+    type: string
+    format: text
+    example: https://firebasestorage.googleapis.com/v0/b/wesopt29-21638.appspot.com
+  type_id:
+    description: 협업 성향 id
+    type: integer
+    example: 1
+  university:
+    description: 대학교
+    type: string
+    format: varchar(20)
+    example: 팀블대학교
+  major:
+    description: 전공
+    type: string
+    format: varchar(50)
+    example: 컴퓨터공학과
+  area:
+    description: 활동 지역
+    type: string
+    format: varchar(20)
+    example: 서울/경기
+  mbti:
+    description: MBTI
+    type: string
+    format: varchar(20)
+    example: ISFP
+  intro:
+    description: 한줄 소개
+    type: string
+    format: varchar(50)
+    example: 기획과 디자인을 겸비한 디자이너 마가렛입니다!
+  description:
+    description: 자기 소개
+    type: string
+    format: text
+    example: 안녕하세요. ~~~입니다. 저는~~
+  phone:
+    description: 핸드폰 번호
+    type: string
+    format: varchar(20)
+    example: 010-1234-5678
+  profile_email:
+    description: 마이프로필 - 연락처 정보 이메일
+    type: string
+    format: varchar(50)
+    example: teambler@gmail.com
+  blog_portfolio:
+    description: 블로그 포트폴리오
+    type: string
+    format: text
+    example: https://section.blog.naver.com/BlogHome.naver
+  notion_portfolio:
+    description: 노션 포트폴리오
+    type: string
+    format: text
+    example: https://section.blog.naver.com/BlogHome.naver
+  github_portfolio:
+    description: 깃허브 포르폴리오
+    type: string
+    format: text
+    example: https://section.blog.naver.com/BlogHome.naver
+  behance_portfolio:
+    description: 비핸스 포트폴리오
+    type: string
+    format: text
+    example: https://section.blog.naver.com/BlogHome.naver
+  other_portfolio:
+    description: 기타 포트폴리오
+    type: string
+    format: text
+    example: https://section.blog.naver.com/BlogHome.naver
+  is_checked:
+    description: 알림 확인 여부
+    type: boolean
+    example: true
+  created_at:
+    description: 생성 날짜
+    type: string
+    format: date-time
+    example: 2021-11-37T01:06:14.2472
+  updated_at:
+    description: 업데이트 날짜
+    type: string
+    format: date-time
+    example: 2021-11-37T01:06:14.2472
+  is_deleted:
+    description: 삭제 여부
+    type: boolean
+    example: false

@@ -1,0 +1,20 @@
+get:
+  tags: ['0. 공통 사항']
+  summary: 공통 에러 메세지
+  responses:
+    '400-NullValue':
+      $ref: '../responses/400-NullValue.yaml'
+    '400-OutofValue':
+      $ref: '../responses/400-OutofValue.yaml'
+    '400-FileTypeError':
+      $ref: '../responses/400-FileTypeError.yaml'
+    '401-TokenEmpty':
+      $ref: '../responses/401-TokenEmpty.yaml'
+    '401-TokenInvalid':
+      $ref: '../responses/401-TokenInvalid.yaml'
+    '404-NotFound':
+      $ref: '../responses/404-NotFound.yaml'
+    '404-NoUser':
+      $ref: '../responses/404-NoUser.yaml'
+    '500-InternalServerError':
+      $ref: '../responses/500-InternalServerError.yaml'

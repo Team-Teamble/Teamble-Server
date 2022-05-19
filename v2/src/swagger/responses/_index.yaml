@@ -1,0 +1,16 @@
+400-NullValue:
+  $ref: './400-NullValue.yaml'
+400-OutofValue:
+  $ref: './400-OutofValue.yaml'
+400-FileTypeError:
+  $ref: './400-FileTypeError.yaml'
+401-TokenEmpty:
+  $ref: './401-TokenEmpty.yaml'
+401-TokenInvalid:
+  $ref: './401-TokenInvalid.yaml'
+404-NotFound:
+  $ref: './404-NotFound.yaml'
+404-NoUser:
+  $ref: './404-NoUser.yaml'
+500-InternalServerError:
+  $ref: './500-InternalServerError.yaml'

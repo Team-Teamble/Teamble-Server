@@ -1,0 +1,9 @@
+description: 파일 형식이 잘못된 경우
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/_index.yaml#/Fail'
+    example:
+      status: 400
+      success: false
+      message: 잘못된 파일 형식입니다

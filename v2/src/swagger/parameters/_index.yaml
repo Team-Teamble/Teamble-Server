@@ -1,0 +1,4 @@
+userId:
+  $ref: './userId.yaml'
+XAuthorizationToken:
+  $ref: './xAuthorizationToken.yaml'

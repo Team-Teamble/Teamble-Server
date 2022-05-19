@@ -1,0 +1,6 @@
+in: path
+required: true
+schema:
+  type: string
+description: 유저 id
+example: 1

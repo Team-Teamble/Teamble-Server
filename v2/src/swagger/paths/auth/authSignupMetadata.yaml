@@ -21,4 +21,4 @@ get:
                 type: object
                 example:
                   field:
-                    $ref: '../../examples/fieldWithoutAll.yaml'
+                    $ref: '../../examples/fieldWithoutAll.yaml' # 참조 에러 주의

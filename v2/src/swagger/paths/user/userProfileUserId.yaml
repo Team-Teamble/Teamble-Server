@@ -26,7 +26,7 @@ get:
                 type: object
                 example:
                   projectCard:
-                    $ref: '../../examples/projectCard.yaml'
+                    $ref: '../../examples/projectCard.yaml' # 참조 에러 주의
 put:
   tags: ['4. 유저']
   summary: 유저 프로필 수정 (규원)

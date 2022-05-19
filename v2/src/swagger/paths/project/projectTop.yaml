@@ -21,4 +21,4 @@ get:
                 type: object
                 example:
                   projectCard:
-                    $ref: '../../examples/projectCard.yaml'
+                    $ref: '../../examples/projectCard.yaml' # 참조 에러 주의

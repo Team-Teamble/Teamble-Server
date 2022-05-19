@@ -21,3 +21,7 @@ components:
     $ref: './schemas/_index.yaml'
   responses:
     $ref: './responses/_index.yaml'
+  # parameters:
+  #   $ref: './parameters/_index.yaml'
+  # examples:
+  #   $ref: './examples/_index.yaml'
